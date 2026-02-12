@@ -84,7 +84,7 @@
       </div>
 
       <h1 id="hero-title" data-aos="fade-up" data-aos-duration="1000" class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-tight mb-6">
-        <span class="wave-char">D</span><span class="wave-char">u</span><span class="wave-char">n</span><span class="wave-char">i</span><span class="wave-char">a</span><span class="wave-char">&nbsp;</span><span class="wave-char hero-gradient-char" style="--ci:0">B</span><span class="wave-char hero-gradient-char" style="--ci:1">u</span><span class="wave-char hero-gradient-char" style="--ci:2">a</span><span class="wave-char hero-gradient-char" style="--ci:3">h</span><span class="wave-char">&nbsp;</span><span class="wave-char hero-gradient-char" style="--ci:4">B</span><span class="wave-char hero-gradient-char" style="--ci:5">e</span><span class="wave-char hero-gradient-char" style="--ci:6">r</span><span class="wave-char hero-gradient-char" style="--ci:7">i</span>
+        <span class="wave-char">D</span><span class="wave-char">u</span><span class="wave-char">n</span><span class="wave-char">i</span><span class="wave-char">a</span><span class="wave-char">&nbsp;</span><span class="wave-char hero-gradient-char">B</span><span class="wave-char hero-gradient-char">u</span><span class="wave-char hero-gradient-char">a</span><span class="wave-char hero-gradient-char">h</span><span class="wave-char">&nbsp;</span><span class="wave-char hero-gradient-char">B</span><span class="wave-char hero-gradient-char">e</span><span class="wave-char hero-gradient-char">r</span><span class="wave-char hero-gradient-char">i</span>
       </h1>
 
       <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -396,57 +396,255 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="150">
 
         <!-- Jantung -->
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="heart-pulse" class="w-6 h-6 text-red-400"></i>
+        <div class="benefit-card bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden transition-colors group">
+          <div class="benefit-header cursor-pointer p-6" onclick="toggleBenefit(this)">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="heart-pulse" class="w-6 h-6 text-red-400"></i>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-neutral-600 benefit-chevron transition-transform"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Kesehatan Jantung</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">Antioksidan dan serat dalam buah beri membantu menurunkan tekanan darah, mengurangi kolesterol jahat (LDL), dan menjaga elastisitas pembuluh darah.</p>
           </div>
-          <h3 class="text-lg font-bold mb-2">Kesehatan Jantung</h3>
-          <p class="text-sm text-neutral-400 leading-relaxed">Antioksidan dan serat dalam buah beri membantu menurunkan tekanan darah, mengurangi kolesterol jahat (LDL), dan menjaga elastisitas pembuluh darah.</p>
+          <div class="benefit-dropdown">
+            <div class="px-6 pb-6 pt-2 border-t border-white/[0.06]">
+              <p class="text-xs text-neutral-500 uppercase tracking-widest font-semibold mb-4">Buah Beri Terkait</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-blueberry.png" alt="Blueberry" class="w-10 h-10 rounded-lg bg-indigo-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Blueberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Kaya antosianin yang terbukti meningkatkan fungsi pembuluh darah dan menurunkan tekanan darah sistolik.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-strawberry.png" alt="Strawberry" class="w-10 h-10 rounded-lg bg-red-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Strawberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Mengandung flavonoid dan asam ellagic yang membantu mengurangi oksidasi kolesterol LDL.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-cranberry.png" alt="Cranberry" class="w-10 h-10 rounded-lg bg-orange-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Cranberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Polifenol dalam cranberry membantu memperbaiki profil lipid darah dan meningkatkan kapasitas antioksidan plasma.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Otak -->
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="brain" class="w-6 h-6 text-indigo-400"></i>
+        <div class="benefit-card bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden transition-colors group">
+          <div class="benefit-header cursor-pointer p-6" onclick="toggleBenefit(this)">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="brain" class="w-6 h-6 text-indigo-400"></i>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-neutral-600 benefit-chevron transition-transform"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Fungsi Otak</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">Anthocyanin dalam beri meningkatkan daya ingat, memperlambat penurunan kognitif, dan membantu komunikasi antar sel-sel saraf di otak.</p>
           </div>
-          <h3 class="text-lg font-bold mb-2">Fungsi Otak</h3>
-          <p class="text-sm text-neutral-400 leading-relaxed">Anthocyanin dalam beri meningkatkan daya ingat, memperlambat penurunan kognitif, dan membantu komunikasi antar sel-sel saraf di otak.</p>
+          <div class="benefit-dropdown">
+            <div class="px-6 pb-6 pt-2 border-t border-white/[0.06]">
+              <p class="text-xs text-neutral-500 uppercase tracking-widest font-semibold mb-4">Buah Beri Terkait</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-blueberry.png" alt="Blueberry" class="w-10 h-10 rounded-lg bg-indigo-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Blueberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Antosianin meningkatkan aliran darah ke otak, memperbaiki daya ingat, dan memperlambat penurunan kognitif terkait usia.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-strawberry.png" alt="Strawberry" class="w-10 h-10 rounded-lg bg-red-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Strawberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Mengandung fisetin yang melindungi sel-sel saraf dari kerusakan oksidatif dan dapat menunda penurunan memori hingga 2,5 tahun.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-raspberry.png" alt="Raspberry" class="w-10 h-10 rounded-lg bg-rose-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Raspberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Senyawa bioaktif seperti antosianin dan flavonoid meningkatkan fungsi eksekutif otak dan mendukung suasana hati positif.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Imun -->
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="shield-check" class="w-6 h-6 text-emerald-400"></i>
+        <div class="benefit-card bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden transition-colors group">
+          <div class="benefit-header cursor-pointer p-6" onclick="toggleBenefit(this)">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="shield-check" class="w-6 h-6 text-emerald-400"></i>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-neutral-600 benefit-chevron transition-transform"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Sistem Imun</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">Kandungan vitamin C yang tinggi memperkuat sistem kekebalan tubuh, membantu melawan infeksi, dan mempercepat proses penyembuhan.</p>
           </div>
-          <h3 class="text-lg font-bold mb-2">Sistem Imun</h3>
-          <p class="text-sm text-neutral-400 leading-relaxed">Kandungan vitamin C yang tinggi memperkuat sistem kekebalan tubuh, membantu melawan infeksi, dan mempercepat proses penyembuhan.</p>
+          <div class="benefit-dropdown">
+            <div class="px-6 pb-6 pt-2 border-t border-white/[0.06]">
+              <p class="text-xs text-neutral-500 uppercase tracking-widest font-semibold mb-4">Buah Beri Terkait</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-strawberry.png" alt="Strawberry" class="w-10 h-10 rounded-lg bg-red-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Strawberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Mengandung 58,8 mg vitamin C per 100g — melebihi jeruk — yang memperkuat pertahanan imun tubuh.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-blackberry.png" alt="Blackberry" class="w-10 h-10 rounded-lg bg-violet-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Blackberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Sumber vitamin C dan vitamin E yang bekerja sinergis meningkatkan respons imunitas tubuh terhadap infeksi.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-acaiberry.png" alt="Acai Berry" class="w-10 h-10 rounded-lg bg-purple-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Acai Berry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Nilai ORAC (kapasitas antioksidan) sangat tinggi yang melindungi sel dari radikal bebas dan merangsang produksi sel darah putih.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Kulit -->
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="sparkles" class="w-6 h-6 text-rose-400"></i>
+        <div class="benefit-card bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden transition-colors group">
+          <div class="benefit-header cursor-pointer p-6" onclick="toggleBenefit(this)">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="sparkles" class="w-6 h-6 text-rose-400"></i>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-neutral-600 benefit-chevron transition-transform"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Kesehatan Kulit</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">Antioksidan melindungi kulit dari kerusakan akibat sinar UV dan radikal bebas, serta merangsang produksi kolagen untuk kulit tetap elastis.</p>
           </div>
-          <h3 class="text-lg font-bold mb-2">Kesehatan Kulit</h3>
-          <p class="text-sm text-neutral-400 leading-relaxed">Antioksidan melindungi kulit dari kerusakan akibat sinar UV dan radikal bebas, serta merangsang produksi kolagen untuk kulit tetap elastis.</p>
+          <div class="benefit-dropdown">
+            <div class="px-6 pb-6 pt-2 border-t border-white/[0.06]">
+              <p class="text-xs text-neutral-500 uppercase tracking-widest font-semibold mb-4">Buah Beri Terkait</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-strawberry.png" alt="Strawberry" class="w-10 h-10 rounded-lg bg-red-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Strawberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Vitamin C tinggi berperan penting dalam sintesis kolagen, membantu kulit tetap kencang dan mengurangi kerutan.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-acaiberry.png" alt="Acai Berry" class="w-10 h-10 rounded-lg bg-purple-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Acai Berry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Meningkatkan ekspresi gen kolagen tipe I dan menekan enzim MMP-1 perusak kolagen, mempercepat regenerasi kulit.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-blueberry.png" alt="Blueberry" class="w-10 h-10 rounded-lg bg-indigo-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Blueberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Antosianin tinggi melindungi sel kulit dari kerusakan sinar UV, mengurangi peradangan, dan meningkatkan sirkulasi ke kulit.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Pencernaan -->
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="salad" class="w-6 h-6 text-amber-400"></i>
+        <div class="benefit-card bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden transition-colors group">
+          <div class="benefit-header cursor-pointer p-6" onclick="toggleBenefit(this)">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="salad" class="w-6 h-6 text-amber-400"></i>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-neutral-600 benefit-chevron transition-transform"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Pencernaan</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">Serat larut dan tidak larut dalam beri melancarkan pencernaan, mencegah sembelit, dan mendukung pertumbuhan bakteri baik di usus.</p>
           </div>
-          <h3 class="text-lg font-bold mb-2">Pencernaan</h3>
-          <p class="text-sm text-neutral-400 leading-relaxed">Serat larut dan tidak larut dalam beri melancarkan pencernaan, mencegah sembelit, dan mendukung pertumbuhan bakteri baik di usus.</p>
+          <div class="benefit-dropdown">
+            <div class="px-6 pb-6 pt-2 border-t border-white/[0.06]">
+              <p class="text-xs text-neutral-500 uppercase tracking-widest font-semibold mb-4">Buah Beri Terkait</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-raspberry.png" alt="Raspberry" class="w-10 h-10 rounded-lg bg-rose-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Raspberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Serat tertinggi di antara beri (6,5g per 100g) yang terbukti secara klinis memperbaiki komposisi mikrobioma usus.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-blackberry.png" alt="Blackberry" class="w-10 h-10 rounded-lg bg-violet-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Blackberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Mengandung 5,3g serat per 100g yang menambah massa feses, mencegah sembelit, dan mendukung pertumbuhan bakteri baik.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-cranberry.png" alt="Cranberry" class="w-10 h-10 rounded-lg bg-orange-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Cranberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Proanthocyanidin mendukung keseimbangan bakteri baik di usus dan mencegah bakteri E. coli menempel di saluran pencernaan.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Mata -->
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="eye" class="w-6 h-6 text-cyan-400"></i>
+        <div class="benefit-card bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden transition-colors group">
+          <div class="benefit-header cursor-pointer p-6" onclick="toggleBenefit(this)">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="eye" class="w-6 h-6 text-cyan-400"></i>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-neutral-600 benefit-chevron transition-transform"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Kesehatan Mata</h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">Lutein dan zeaxanthin dalam beri melindungi retina dari kerusakan, mengurangi risiko degenerasi makula, dan menjaga ketajaman penglihatan.</p>
           </div>
-          <h3 class="text-lg font-bold mb-2">Kesehatan Mata</h3>
-          <p class="text-sm text-neutral-400 leading-relaxed">Lutein dan zeaxanthin dalam beri melindungi retina dari kerusakan, mengurangi risiko degenerasi makula, dan menjaga ketajaman penglihatan.</p>
+          <div class="benefit-dropdown">
+            <div class="px-6 pb-6 pt-2 border-t border-white/[0.06]">
+              <p class="text-xs text-neutral-500 uppercase tracking-widest font-semibold mb-4">Buah Beri Terkait</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-blueberry.png" alt="Blueberry" class="w-10 h-10 rounded-lg bg-indigo-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Blueberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Konsumsi rutin mengurangi risiko degenerasi makula hingga 64%. Antosianin menjaga integritas retina dan meningkatkan penglihatan redup.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-blackberry.png" alt="Blackberry" class="w-10 h-10 rounded-lg bg-violet-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Blackberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Mengandung lutein dan zeaxanthin yang melindungi mata dari kerusakan foto-oksidatif dan mendukung adaptasi penglihatan malam.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
+                  <img src="img/logo-cranberry.png" alt="Cranberry" class="w-10 h-10 rounded-lg bg-orange-500/10 p-1.5 object-contain flex-shrink-0" />
+                  <div>
+                    <span class="text-sm font-semibold text-white">Cranberry</span>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Mengandung antosianin, flavonoid, dan karotenoid yang mengurangi stres oksidatif pada jaringan retina.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

@@ -23,6 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===========================
+// BENEFIT DROPDOWN
+// ===========================
+function toggleBenefit(header) {
+  const card = header.closest('.benefit-card');
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.benefit-card.open').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+function equalizeBenefitCards() {
+  const headers = document.querySelectorAll('.benefit-header');
+  headers.forEach(h => h.style.minHeight = '');
+  let maxH = 0;
+  headers.forEach(h => { if (h.offsetHeight > maxH) maxH = h.offsetHeight; });
+  headers.forEach(h => h.style.minHeight = maxH + 'px');
+}
+
+window.addEventListener('load', equalizeBenefitCards);
+window.addEventListener('resize', equalizeBenefitCards);
+
+// ===========================
 // WAVE TEXT EFFECT
 // ===========================
 function initWaveText() {

@@ -89,10 +89,8 @@ body {
 }
 
 .hero-gradient-char {
-  color: transparent;
+  color: #ef4444;
   background: linear-gradient(135deg, #ef4444, #f87171, #fda4af);
-  background-size: 300% 100%;
-  background-position: calc(var(--ci) * 12.5%) 0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -116,12 +114,30 @@ body {
 /* ===========================
    BERRY CARDS
    =========================== */
+.berry-card {
+  height: 100%;
+}
+
 .berry-card-inner {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.berry-card-inner > .p-6,
+.berry-card-inner > div:last-child:not(.berry-card-img-wrapper) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.berry-card-inner > div:last-child:not(.berry-card-img-wrapper) > p {
+  flex: 1;
 }
 
 .berry-card:hover .berry-card-inner {
@@ -481,6 +497,41 @@ body {
   background: white;
   width: 24px;
   border-radius: 9999px;
+}
+
+/* ===========================
+   BENEFIT DROPDOWN
+   =========================== */
+.benefit-card {
+  align-self: start;
+}
+
+.benefit-dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.benefit-card.open .benefit-dropdown {
+  max-height: 500px;
+}
+
+.benefit-card.open .benefit-chevron {
+  transform: rotate(180deg);
+}
+
+.benefit-card.open {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ===========================
+   DIFFICULTY BUTTONS
+   =========================== */
+.diff-btn {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 /* ===========================
