@@ -76,6 +76,28 @@ body {
   background-clip: text;
 }
 
+/* Wave Text Effect */
+#hero-title {
+  overflow: visible;
+}
+
+.wave-char {
+  display: inline-block;
+  transition: transform 0.25s ease-out;
+  cursor: default;
+  will-change: transform;
+}
+
+.hero-gradient-char {
+  color: transparent;
+  background: linear-gradient(135deg, #ef4444, #f87171, #fda4af);
+  background-size: 300% 100%;
+  background-position: calc(var(--ci) * 12.5%) 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .scroll-indicator {
   animation: fadeInUp 1s ease 1.5s both;
 }

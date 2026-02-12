@@ -19,7 +19,41 @@ document.addEventListener('DOMContentLoaded', () => {
   initGameTabs();
   initQuiz();
   initCrossword();
+  initWaveText();
 });
+
+// ===========================
+// WAVE TEXT EFFECT
+// ===========================
+function initWaveText() {
+  const title = document.getElementById('hero-title');
+  if (!title) return;
+  const chars = title.querySelectorAll('.wave-char');
+
+  title.addEventListener('mousemove', (e) => {
+    chars.forEach((c) => {
+      const rect = c.getBoundingClientRect();
+      const charCenterX = rect.left + rect.width / 2;
+      const dist = Math.abs(e.clientX - charCenterX);
+
+      if (dist < 20) {
+        c.style.transform = 'translateY(-10px) scale(1.25)';
+      } else if (dist < 50) {
+        c.style.transform = 'translateY(-6px) scale(1.15)';
+      } else if (dist < 80) {
+        c.style.transform = 'translateY(-3px) scale(1.07)';
+      } else {
+        c.style.transform = 'translateY(0) scale(1)';
+      }
+    });
+  });
+
+  title.addEventListener('mouseleave', () => {
+    chars.forEach(c => {
+      c.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+}
 
 // ===========================
 // BERRY DATA
@@ -334,7 +368,7 @@ function initVideoCarousel() {
 // ===========================
 // QUIZ
 // ===========================
-const quizQuestions = [
+const allQuizQuestions = [
   {
     question: 'Buah beri manakah yang dijuluki "raja antioksidan"?',
     options: ['Strawberry', 'Blueberry', 'Raspberry', 'Cranberry'],
@@ -365,17 +399,92 @@ const quizQuestions = [
     correct: 2,
     explanation: 'Acai berry berasal dari hutan hujan Amazon di Brazil dan telah dikonsumsi penduduk asli selama ratusan tahun.',
   },
+  {
+    question: 'Vitamin apa yang paling tinggi kandungannya pada Strawberry?',
+    options: ['Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin E'],
+    correct: 2,
+    explanation: 'Strawberry mengandung 58.8mg vitamin C per 100g, menjadikannya buah beri dengan kandungan vitamin C tertinggi.',
+  },
+  {
+    question: 'Buah beri mana yang kaya vitamin K dan baik untuk kesehatan tulang?',
+    options: ['Blueberry', 'Blackberry', 'Strawberry', 'Cranberry'],
+    correct: 1,
+    explanation: 'Blackberry merupakan sumber vitamin K terkaya di antara semua buah beri, penting untuk kesehatan tulang dan pembekuan darah.',
+  },
+  {
+    question: 'Anthocyanin pada buah beri terutama bermanfaat untuk kesehatan organ apa?',
+    options: ['Jantung', 'Hati', 'Otak', 'Ginjal'],
+    correct: 2,
+    explanation: 'Anthocyanin dalam beri meningkatkan daya ingat, memperlambat penurunan kognitif, dan membantu komunikasi antar sel-sel saraf di otak.',
+  },
+  {
+    question: 'Berapa kalori yang terkandung dalam 100g Blueberry?',
+    options: ['32 kkal', '43 kkal', '57 kkal', '70 kkal'],
+    correct: 2,
+    explanation: 'Blueberry mengandung 57 kkal per 100g, menjadikannya pilihan camilan sehat yang relatif rendah kalori.',
+  },
+  {
+    question: 'Buah beri apa yang mengandung asam lemak omega-3, omega-6, dan omega-9?',
+    options: ['Blueberry', 'Cranberry', 'Acai Berry', 'Raspberry'],
+    correct: 2,
+    explanation: 'Acai berry kaya akan asam lemak omega-3, omega-6, dan omega-9 yang baik untuk kesehatan jantung dan kulit.',
+  },
+  {
+    question: 'Strawberry termasuk dalam keluarga tanaman apa?',
+    options: ['Solanaceae (Terung)', 'Rosaceae (Mawar)', 'Ericaceae (Heather)', 'Rutaceae (Jeruk)'],
+    correct: 1,
+    explanation: 'Strawberry termasuk keluarga mawar (Rosaceae) dan secara botani bukan buah beri sejati.',
+  },
+  {
+    question: 'Buah beri apa yang dipanen dengan cara menggenangi ladang dengan air?',
+    options: ['Blueberry', 'Strawberry', 'Cranberry', 'Blackberry'],
+    correct: 2,
+    explanation: 'Cranberry dipanen dengan cara menggenangi ladang dengan air, bukan dipetik dari pohon. Buah matangnya mengapung di permukaan air.',
+  },
 ];
 
+let quizQuestions = [];
 let currentQuestion = 0;
 let score = 0;
 let answered = false;
+let quizTotal = 5;
 
 function initQuiz() {
-  renderQuestion();
+  document.querySelectorAll('.diff-btn[data-game="quiz"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      startQuiz(btn.dataset.diff);
+    });
+  });
 
   document.getElementById('quiz-next').addEventListener('click', nextQuestion);
   document.getElementById('quiz-restart').addEventListener('click', restartQuiz);
+}
+
+function startQuiz(difficulty) {
+  currentQuestion = 0;
+  score = 0;
+  answered = false;
+
+  if (difficulty === 'easy') {
+    quizTotal = 5;
+  } else if (difficulty === 'medium') {
+    quizTotal = 8;
+  } else {
+    quizTotal = 12;
+  }
+
+  // Shuffle all questions and pick the required amount
+  const shuffled = [...allQuizQuestions].sort(() => Math.random() - 0.5);
+  quizQuestions = shuffled.slice(0, quizTotal);
+
+  document.getElementById('quiz-total').textContent = quizTotal;
+  document.getElementById('quiz-score-display').textContent = '0';
+
+  document.getElementById('quiz-difficulty').classList.add('hidden');
+  document.getElementById('quiz-container').classList.remove('hidden');
+  document.getElementById('quiz-result').classList.add('hidden');
+
+  renderQuestion();
 }
 
 function renderQuestion() {
@@ -384,7 +493,8 @@ function renderQuestion() {
 
   document.getElementById('quiz-question').textContent = q.question;
   document.getElementById('quiz-current').textContent = currentQuestion + 1;
-  document.getElementById('quiz-progress').style.width = `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+  document.getElementById('quiz-total').textContent = quizTotal;
+  document.getElementById('quiz-progress').style.width = `${((currentQuestion + 1) / quizTotal) * 100}%`;
 
   const optionsContainer = document.getElementById('quiz-options');
   optionsContainer.innerHTML = q.options
@@ -470,34 +580,38 @@ function showResult() {
   resultEl.classList.remove('hidden');
 
   document.getElementById('result-score').textContent = score;
+  document.getElementById('result-total').textContent = quizTotal;
+
+  const pct = (score / quizTotal) * 100;
 
   // Result text
   let text = '';
-  if (score === 5) text = 'Sempurna! Kamu adalah ahli buah beri sejati!';
-  else if (score >= 4) text = 'Hebat! Pengetahuanmu tentang buah beri sangat baik!';
-  else if (score >= 3) text = 'Bagus! Kamu cukup mengenal dunia buah beri.';
-  else if (score >= 2) text = 'Lumayan! Masih ada yang bisa dipelajari tentang buah beri.';
+  if (pct === 100) text = 'Sempurna! Kamu adalah ahli buah beri sejati!';
+  else if (pct >= 80) text = 'Hebat! Pengetahuanmu tentang buah beri sangat baik!';
+  else if (pct >= 60) text = 'Bagus! Kamu cukup mengenal dunia buah beri.';
+  else if (pct >= 40) text = 'Lumayan! Masih ada yang bisa dipelajari tentang buah beri.';
   else text = 'Jangan menyerah! Coba baca materinya lagi dan ulangi kuisnya.';
 
   document.getElementById('result-text').textContent = text;
 
-  // Stars
+  // Stars (5 stars based on percentage)
+  const filledStars = Math.round((score / quizTotal) * 5);
   const starsContainer = document.getElementById('result-stars');
   starsContainer.innerHTML = Array.from({ length: 5 }, (_, i) => `
-    <svg class="result-star ${i < score ? 'filled' : 'empty'}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${i < score ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="result-star ${i < filledStars ? 'filled' : 'empty'}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${i < filledStars ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
     </svg>
   `).join('');
 
   // Result icon
   const iconContainer = document.getElementById('result-icon');
-  if (score >= 4) {
+  if (pct >= 80) {
     iconContainer.innerHTML = `
       <div class="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-400/20 to-orange-500/20 border border-yellow-500/20 flex items-center justify-center">
         <svg class="w-10 h-10 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
       </div>
     `;
-  } else if (score >= 2) {
+  } else if (pct >= 40) {
     iconContainer.innerHTML = `
       <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400/20 to-cyan-500/20 border border-blue-500/20 flex items-center justify-center">
         <svg class="w-10 h-10 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
@@ -522,9 +636,8 @@ function restartQuiz() {
 
   document.getElementById('quiz-score-display').textContent = '0';
   document.getElementById('quiz-result').classList.add('hidden');
-  document.getElementById('quiz-container').classList.remove('hidden');
-
-  renderQuestion();
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('quiz-difficulty').classList.remove('hidden');
 }
 
 // ===========================
@@ -541,6 +654,11 @@ function initGameTabs() {
     tabTts.classList.remove('active');
     panelQuiz.classList.remove('hidden');
     panelTts.classList.add('hidden');
+
+    // Reset quiz to difficulty selector
+    document.getElementById('quiz-difficulty').classList.remove('hidden');
+    document.getElementById('quiz-container').classList.add('hidden');
+    document.getElementById('quiz-result').classList.add('hidden');
   });
 
   tabTts.addEventListener('click', () => {
@@ -548,51 +666,153 @@ function initGameTabs() {
     tabQuiz.classList.remove('active');
     panelTts.classList.remove('hidden');
     panelQuiz.classList.add('hidden');
+
+    // Reset TTS to difficulty selector
+    document.getElementById('tts-difficulty').classList.remove('hidden');
+    document.getElementById('tts-content').classList.add('hidden');
   });
 }
 
 // ===========================
 // CROSSWORD (TTS)
 // ===========================
+const ttsConfigs = {
+  easy: {
+    grid: [
+      ['S','T','R','A','W','B','E','R','R','Y'],
+      [null,null,null,null,null,'E',null,null,null,null],
+      [null,null,null,'S','E','R','A','T',null,null],
+      [null,null,null,null,null,'I',null,null,null,null],
+    ],
+    cellNumbers: { '0,0':1, '0,5':2, '2,3':3 },
+    words: {
+      '1A': { cells: [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9]] },
+      '2D': { cells: [[0,5],[1,5],[2,5],[3,5]] },
+      '3A': { cells: [[2,3],[2,4],[2,5],[2,6],[2,7]] },
+    },
+    clues: {
+      across: [
+        { number: 1, key: '1A', text: 'Buah beri merah yang bijinya di luar permukaan kulit (10 huruf)' },
+        { number: 3, key: '3A', text: 'Nutrisi yang paling tinggi kandungannya pada Raspberry (5 huruf)' },
+      ],
+      down: [
+        { number: 2, key: '2D', text: 'Kelompok buah kecil berwarna cerah kaya nutrisi (4 huruf)' },
+      ],
+    },
+  },
+  medium: {
+    grid: [
+      ['S','T','R','A','W','B','E','R','R','Y'],
+      [null,null,null,'C',null,'L',null,null,null,null],
+      [null,null,null,'A',null,'U',null,null,null,null],
+      [null,null,null,'I','S','E','R','A','T',null],
+      [null,null,null,null,null,'B',null,null,null,null],
+      ['C','R','A','N','B','E','R','R','Y',null],
+      [null,null,null,null,null,'R',null,null,null,null],
+      [null,null,null,null,null,'R',null,null,null,null],
+      [null,null,null,null,null,'Y',null,null,null,null],
+    ],
+    cellNumbers: { '0,0':1, '0,3':2, '0,5':3, '3,4':4, '5,0':5 },
+    words: {
+      '1A': { cells: [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9]] },
+      '4A': { cells: [[3,4],[3,5],[3,6],[3,7],[3,8]] },
+      '5A': { cells: [[5,0],[5,1],[5,2],[5,3],[5,4],[5,5],[5,6],[5,7],[5,8]] },
+      '2D': { cells: [[0,3],[1,3],[2,3],[3,3]] },
+      '3D': { cells: [[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5]] },
+    },
+    clues: {
+      across: [
+        { number: 1, key: '1A', text: 'Buah beri merah yang bijinya terletak di luar permukaan kulit (10 huruf)' },
+        { number: 4, key: '4A', text: 'Nutrisi yang paling tinggi kandungannya pada Raspberry (5 huruf)' },
+        { number: 5, key: '5A', text: 'Buah beri yang terkenal menjaga kesehatan saluran kemih (9 huruf)' },
+      ],
+      down: [
+        { number: 2, key: '2D', text: 'Buah beri dari Amazon yang populer dijadikan smoothie bowl (4 huruf)' },
+        { number: 3, key: '3D', text: 'Buah beri biru yang dijuluki \'raja antioksidan\' (9 huruf)' },
+      ],
+    },
+  },
+  hard: {
+    grid: [
+      [null,null,'S','T','R','A','W','B','E','R','R','Y'],
+      [null,null,null,null,null,null,null,'L',null,null,null,null],
+      [null,null,null,null,null,null,null,'U',null,null,null,null],
+      [null,null,'R','A','S','P','B','E','R','R','Y',null],
+      [null,null,null,null,null,null,null,'B',null,null,null,null],
+      [null,null,null,null,null,null,'S','E','R','A','T',null],
+      [null,'C','R','A','N','B','E','R','R','Y',null,null],
+      [null,null,null,'C',null,null,null,'R',null,null,null,null],
+      ['S','E','G','A','R',null,null,'Y',null,null,null,null],
+      [null,null,null,'I',null,null,null,null,null,null,null,null],
+    ],
+    cellNumbers: { '0,2':1, '0,7':2, '3,2':3, '5,6':4, '6,1':5, '6,3':6, '8,0':7 },
+    words: {
+      '1A': { cells: [[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9],[0,10],[0,11]] },
+      '3A': { cells: [[3,2],[3,3],[3,4],[3,5],[3,6],[3,7],[3,8],[3,9],[3,10]] },
+      '4A': { cells: [[5,6],[5,7],[5,8],[5,9],[5,10]] },
+      '5A': { cells: [[6,1],[6,2],[6,3],[6,4],[6,5],[6,6],[6,7],[6,8],[6,9]] },
+      '7A': { cells: [[8,0],[8,1],[8,2],[8,3],[8,4]] },
+      '2D': { cells: [[0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7]] },
+      '6D': { cells: [[6,3],[7,3],[8,3],[9,3]] },
+    },
+    clues: {
+      across: [
+        { number: 1, key: '1A', text: 'Buah beri merah yang bijinya terletak di luar permukaan kulit (10 huruf)' },
+        { number: 3, key: '3A', text: 'Buah beri dengan kandungan serat tertinggi di antara semua buah beri (9 huruf)' },
+        { number: 4, key: '4A', text: 'Nutrisi yang paling tinggi pada Raspberry (5 huruf)' },
+        { number: 5, key: '5A', text: 'Buah beri yang terkenal menjaga kesehatan saluran kemih (9 huruf)' },
+        { number: 7, key: '7A', text: 'Buah beri yang baru dipetik terasa ___ dan menyegarkan (5 huruf)' },
+      ],
+      down: [
+        { number: 2, key: '2D', text: 'Buah beri biru yang dijuluki \'raja antioksidan\' (9 huruf)' },
+        { number: 6, key: '6D', text: 'Buah beri dari Amazon yang populer dijadikan smoothie bowl (4 huruf)' },
+      ],
+    },
+  },
+};
+
+let ttsGrid = null;
+let ttsWords = null;
+let ttsInputMap = {};
+let ttsSelectedCell = null;
+let ttsSelectedWord = null;
+
 function initCrossword() {
-  // Grid layout: 10 cols x 9 rows
-  // null = black cell, letter = white cell with answer
-  const grid = [
-    ['S','T','R','A','W','B','E','R','R','Y'],
-    [null,null,null,'C',null,'L',null,null,null,null],
-    [null,null,null,'A',null,'U',null,null,null,null],
-    [null,null,null,'I','S','E','R','A','T',null],
-    [null,null,null,null,null,'B',null,null,null,null],
-    ['C','R','A','N','B','E','R','R','Y',null],
-    [null,null,null,null,null,'R',null,null,null,null],
-    [null,null,null,null,null,'R',null,null,null,null],
-    [null,null,null,null,null,'Y',null,null,null,null],
-  ];
+  document.querySelectorAll('.diff-btn[data-game="tts"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      startCrossword(btn.dataset.diff);
+    });
+  });
 
-  // Cell numbers: { "row,col": number }
-  const cellNumbers = {
-    '0,0': 1,
-    '0,3': 2,
-    '0,5': 3,
-    '3,4': 4,
-    '5,0': 5,
-  };
+  document.getElementById('tts-check').addEventListener('click', checkCrossword);
+  document.getElementById('tts-reset').addEventListener('click', resetCrossword);
+}
 
-  // Word definitions for highlighting
-  const words = {
-    '1A': { cells: [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,9]] },
-    '4A': { cells: [[3,4],[3,5],[3,6],[3,7],[3,8]] },
-    '5A': { cells: [[5,0],[5,1],[5,2],[5,3],[5,4],[5,5],[5,6],[5,7],[5,8]] },
-    '2D': { cells: [[0,3],[1,3],[2,3],[3,3]] },
-    '3D': { cells: [[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5]] },
-  };
+function startCrossword(difficulty) {
+  const config = ttsConfigs[difficulty];
+  ttsGrid = config.grid;
+  ttsWords = config.words;
+  ttsInputMap = {};
+  ttsSelectedCell = null;
+  ttsSelectedWord = null;
 
+  document.getElementById('tts-difficulty').classList.add('hidden');
+  document.getElementById('tts-content').classList.remove('hidden');
+
+  buildCrosswordGrid(config);
+  buildCrosswordClues(config);
+
+  lucide.createIcons();
+}
+
+function buildCrosswordGrid(config) {
   const gridEl = document.getElementById('tts-grid');
-  let selectedCell = null;
-  let selectedWord = null;
-  const inputMap = {};
+  gridEl.innerHTML = '';
 
-  // Build grid
+  const grid = config.grid;
+  const cellNumbers = config.cellNumbers;
+  const words = config.words;
+
   grid.forEach((row, r) => {
     const rowEl = document.createElement('div');
     rowEl.className = 'tts-row';
@@ -621,15 +841,14 @@ function initCrossword() {
         input.setAttribute('autocomplete', 'off');
 
         input.addEventListener('focus', () => {
-          clearHighlights();
-          selectedCell = { r, c };
+          clearTtsHighlights();
+          ttsSelectedCell = { r, c };
 
-          // Find which word this cell belongs to and highlight it
-          const wordKey = findWord(r, c);
+          const wordKey = findTtsWord(r, c);
           if (wordKey) {
-            selectedWord = wordKey;
-            highlightWord(wordKey);
-            highlightClue(wordKey);
+            ttsSelectedWord = wordKey;
+            highlightTtsWord(wordKey);
+            highlightTtsClue(wordKey);
           }
 
           cellEl.classList.add('selected');
@@ -638,22 +857,22 @@ function initCrossword() {
         input.addEventListener('input', (e) => {
           const val = e.target.value.toUpperCase();
           e.target.value = val;
-          if (val) moveToNext(r, c);
+          if (val) moveToNextTts(r, c);
         });
 
         input.addEventListener('keydown', (e) => {
           if (e.key === 'Backspace' && !e.target.value) {
             e.preventDefault();
-            moveToPrev(r, c);
+            moveToPrevTts(r, c);
           }
-          if (e.key === 'ArrowRight') { e.preventDefault(); moveDirection(r, c, 0, 1); }
-          if (e.key === 'ArrowLeft') { e.preventDefault(); moveDirection(r, c, 0, -1); }
-          if (e.key === 'ArrowDown') { e.preventDefault(); moveDirection(r, c, 1, 0); }
-          if (e.key === 'ArrowUp') { e.preventDefault(); moveDirection(r, c, -1, 0); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); moveDirectionTts(r, c, 0, 1); }
+          if (e.key === 'ArrowLeft') { e.preventDefault(); moveDirectionTts(r, c, 0, -1); }
+          if (e.key === 'ArrowDown') { e.preventDefault(); moveDirectionTts(r, c, 1, 0); }
+          if (e.key === 'ArrowUp') { e.preventDefault(); moveDirectionTts(r, c, -1, 0); }
         });
 
         cellEl.appendChild(input);
-        inputMap[key] = input;
+        ttsInputMap[key] = input;
       }
 
       rowEl.appendChild(cellEl);
@@ -661,147 +880,195 @@ function initCrossword() {
 
     gridEl.appendChild(rowEl);
   });
+}
 
-  // Click clues to highlight & focus
-  document.querySelectorAll('.tts-clue').forEach(clue => {
-    clue.addEventListener('click', () => {
-      const key = clue.dataset.clue;
-      if (words[key]) {
-        clearHighlights();
-        selectedWord = key;
-        highlightWord(key);
-        highlightClue(key);
-        const first = words[key].cells[0];
-        const firstInput = inputMap[`${first[0]},${first[1]}`];
-        if (firstInput) firstInput.focus();
-      }
+function buildCrosswordClues(config) {
+  const cluesEl = document.getElementById('tts-clues');
+  cluesEl.innerHTML = '';
+
+  // Across clues
+  const acrossDiv = document.createElement('div');
+  acrossDiv.innerHTML = '<h4 class="text-sm font-semibold uppercase tracking-wider text-red-400 mb-3">Mendatar</h4>';
+  const acrossList = document.createElement('div');
+  acrossList.className = 'space-y-2';
+
+  config.clues.across.forEach(clue => {
+    const clueEl = document.createElement('div');
+    clueEl.className = 'tts-clue flex gap-3 text-sm';
+    clueEl.dataset.clue = clue.key;
+    clueEl.innerHTML = `<span class="font-bold text-white w-5 flex-shrink-0">${clue.number}.</span><span class="text-neutral-400">${clue.text}</span>`;
+    clueEl.addEventListener('click', () => {
+      onTtsClueClick(clue.key);
     });
+    acrossList.appendChild(clueEl);
   });
 
-  function findWord(r, c) {
-    // Prefer the word in the current direction, or first match
-    if (selectedWord && words[selectedWord]) {
-      const inCurrent = words[selectedWord].cells.some(([wr, wc]) => wr === r && wc === c);
-      if (inCurrent) return selectedWord;
-    }
-    for (const [key, w] of Object.entries(words)) {
-      if (w.cells.some(([wr, wc]) => wr === r && wc === c)) return key;
-    }
-    return null;
-  }
+  acrossDiv.appendChild(acrossList);
+  cluesEl.appendChild(acrossDiv);
 
-  function highlightWord(key) {
-    words[key].cells.forEach(([wr, wc]) => {
-      const input = inputMap[`${wr},${wc}`];
-      if (input) input.parentElement.classList.add('highlighted');
+  // Down clues
+  const downDiv = document.createElement('div');
+  downDiv.innerHTML = '<h4 class="text-sm font-semibold uppercase tracking-wider text-red-400 mb-3">Menurun</h4>';
+  const downList = document.createElement('div');
+  downList.className = 'space-y-2';
+
+  config.clues.down.forEach(clue => {
+    const clueEl = document.createElement('div');
+    clueEl.className = 'tts-clue flex gap-3 text-sm';
+    clueEl.dataset.clue = clue.key;
+    clueEl.innerHTML = `<span class="font-bold text-white w-5 flex-shrink-0">${clue.number}.</span><span class="text-neutral-400">${clue.text}</span>`;
+    clueEl.addEventListener('click', () => {
+      onTtsClueClick(clue.key);
     });
-  }
+    downList.appendChild(clueEl);
+  });
 
-  function highlightClue(key) {
-    document.querySelectorAll('.tts-clue').forEach(c => c.classList.remove('active'));
-    const clueEl = document.querySelector(`.tts-clue[data-clue="${key}"]`);
-    if (clueEl) clueEl.classList.add('active');
-  }
+  downDiv.appendChild(downList);
+  cluesEl.appendChild(downDiv);
+}
 
-  function clearHighlights() {
-    document.querySelectorAll('.tts-cell').forEach(c => {
-      c.classList.remove('selected', 'highlighted');
-    });
-    document.querySelectorAll('.tts-clue').forEach(c => c.classList.remove('active'));
-  }
+function onTtsClueClick(key) {
+  if (ttsWords[key]) {
+    clearTtsHighlights();
+    ttsSelectedWord = key;
+    highlightTtsWord(key);
+    highlightTtsClue(key);
 
-  function moveToNext(r, c) {
-    if (!selectedWord) return;
-    const cells = words[selectedWord].cells;
-    const idx = cells.findIndex(([wr, wc]) => wr === r && wc === c);
-    if (idx >= 0 && idx < cells.length - 1) {
-      const [nr, nc] = cells[idx + 1];
-      const next = inputMap[`${nr},${nc}`];
-      if (next) next.focus();
+    // Focus first empty cell, or first cell if all filled
+    const cells = ttsWords[key].cells;
+    let targetCell = cells[0];
+    for (const [cr, cc] of cells) {
+      const inp = ttsInputMap[`${cr},${cc}`];
+      if (inp && !inp.value) {
+        targetCell = [cr, cc];
+        break;
+      }
     }
+    const targetInput = ttsInputMap[`${targetCell[0]},${targetCell[1]}`];
+    if (targetInput) targetInput.focus();
   }
+}
 
-  function moveToPrev(r, c) {
-    if (!selectedWord) return;
-    const cells = words[selectedWord].cells;
-    const idx = cells.findIndex(([wr, wc]) => wr === r && wc === c);
-    if (idx > 0) {
-      const [pr, pc] = cells[idx - 1];
-      const prev = inputMap[`${pr},${pc}`];
-      if (prev) { prev.focus(); prev.value = ''; }
-    }
+function findTtsWord(r, c) {
+  if (ttsSelectedWord && ttsWords[ttsSelectedWord]) {
+    const inCurrent = ttsWords[ttsSelectedWord].cells.some(([wr, wc]) => wr === r && wc === c);
+    if (inCurrent) return ttsSelectedWord;
   }
+  for (const [key, w] of Object.entries(ttsWords)) {
+    if (w.cells.some(([wr, wc]) => wr === r && wc === c)) return key;
+  }
+  return null;
+}
 
-  function moveDirection(r, c, dr, dc) {
-    const nr = r + dr;
-    const nc = c + dc;
-    const next = inputMap[`${nr},${nc}`];
+function highlightTtsWord(key) {
+  ttsWords[key].cells.forEach(([wr, wc]) => {
+    const input = ttsInputMap[`${wr},${wc}`];
+    if (input) input.parentElement.classList.add('highlighted');
+  });
+}
+
+function highlightTtsClue(key) {
+  document.querySelectorAll('.tts-clue').forEach(c => c.classList.remove('active'));
+  const clueEl = document.querySelector(`.tts-clue[data-clue="${key}"]`);
+  if (clueEl) clueEl.classList.add('active');
+}
+
+function clearTtsHighlights() {
+  document.querySelectorAll('.tts-cell').forEach(c => {
+    c.classList.remove('selected', 'highlighted');
+  });
+  document.querySelectorAll('.tts-clue').forEach(c => c.classList.remove('active'));
+}
+
+function moveToNextTts(r, c) {
+  if (!ttsSelectedWord) return;
+  const cells = ttsWords[ttsSelectedWord].cells;
+  const idx = cells.findIndex(([wr, wc]) => wr === r && wc === c);
+  if (idx >= 0 && idx < cells.length - 1) {
+    const [nr, nc] = cells[idx + 1];
+    const next = ttsInputMap[`${nr},${nc}`];
     if (next) next.focus();
   }
+}
 
-  // Check answers
-  document.getElementById('tts-check').addEventListener('click', () => {
-    let allCorrect = true;
-    let allFilled = true;
+function moveToPrevTts(r, c) {
+  if (!ttsSelectedWord) return;
+  const cells = ttsWords[ttsSelectedWord].cells;
+  const idx = cells.findIndex(([wr, wc]) => wr === r && wc === c);
+  if (idx > 0) {
+    const [pr, pc] = cells[idx - 1];
+    const prev = ttsInputMap[`${pr},${pc}`];
+    if (prev) { prev.focus(); prev.value = ''; }
+  }
+}
 
-    for (const [key, input] of Object.entries(inputMap)) {
-      const [r, c] = key.split(',').map(Number);
-      const answer = grid[r][c];
-      const val = input.value.toUpperCase();
-      const cell = input.parentElement;
+function moveDirectionTts(r, c, dr, dc) {
+  const nr = r + dr;
+  const nc = c + dc;
+  const next = ttsInputMap[`${nr},${nc}`];
+  if (next) next.focus();
+}
 
-      cell.classList.remove('correct', 'wrong');
+function checkCrossword() {
+  let allCorrect = true;
+  let allFilled = true;
 
-      if (!val) {
-        allFilled = false;
-        allCorrect = false;
-      } else if (val === answer) {
-        cell.classList.add('correct');
-      } else {
-        cell.classList.add('wrong');
-        allCorrect = false;
-      }
-    }
+  for (const [key, input] of Object.entries(ttsInputMap)) {
+    const [r, c] = key.split(',').map(Number);
+    const answer = ttsGrid[r][c];
+    const val = input.value.toUpperCase();
+    const cell = input.parentElement;
 
-    const feedback = document.getElementById('tts-feedback');
-    feedback.classList.remove('hidden');
+    cell.classList.remove('correct', 'wrong');
 
-    if (allCorrect && allFilled) {
-      feedback.innerHTML = `
-        <div class="quiz-feedback-box correct">
-          <svg class="w-5 h-5 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          <div><strong>Sempurna!</strong><p class="mt-1 opacity-80">Semua jawaban benar! Kamu ahli buah beri sejati!</p></div>
-        </div>`;
-    } else if (!allFilled) {
-      feedback.innerHTML = `
-        <div class="quiz-feedback-box wrong">
-          <svg class="w-5 h-5 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
-          </svg>
-          <div><strong>Belum lengkap!</strong><p class="mt-1 opacity-80">Masih ada kotak yang kosong. Isi semua kotak terlebih dahulu.</p></div>
-        </div>`;
+    if (!val) {
+      allFilled = false;
+      allCorrect = false;
+    } else if (val === answer) {
+      cell.classList.add('correct');
     } else {
-      feedback.innerHTML = `
-        <div class="quiz-feedback-box wrong">
-          <svg class="w-5 h-5 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
-          </svg>
-          <div><strong>Ada yang salah!</strong><p class="mt-1 opacity-80">Kotak merah menunjukkan jawaban yang perlu diperbaiki.</p></div>
-        </div>`;
+      cell.classList.add('wrong');
+      allCorrect = false;
     }
-  });
+  }
 
-  // Reset
-  document.getElementById('tts-reset').addEventListener('click', () => {
-    for (const input of Object.values(inputMap)) {
-      input.value = '';
-      input.parentElement.classList.remove('correct', 'wrong', 'selected', 'highlighted');
-    }
-    document.querySelectorAll('.tts-clue').forEach(c => c.classList.remove('active'));
-    document.getElementById('tts-feedback').classList.add('hidden');
-    selectedCell = null;
-    selectedWord = null;
-  });
+  const feedback = document.getElementById('tts-feedback');
+  feedback.classList.remove('hidden');
+
+  if (allCorrect && allFilled) {
+    feedback.innerHTML = `
+      <div class="quiz-feedback-box correct">
+        <svg class="w-5 h-5 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <div><strong>Sempurna!</strong><p class="mt-1 opacity-80">Semua jawaban benar! Kamu ahli buah beri sejati!</p></div>
+      </div>`;
+  } else if (!allFilled) {
+    feedback.innerHTML = `
+      <div class="quiz-feedback-box wrong">
+        <svg class="w-5 h-5 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
+        <div><strong>Belum lengkap!</strong><p class="mt-1 opacity-80">Masih ada kotak yang kosong. Isi semua kotak terlebih dahulu.</p></div>
+      </div>`;
+  } else {
+    feedback.innerHTML = `
+      <div class="quiz-feedback-box wrong">
+        <svg class="w-5 h-5 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
+        <div><strong>Ada yang salah!</strong><p class="mt-1 opacity-80">Kotak merah menunjukkan jawaban yang perlu diperbaiki.</p></div>
+      </div>`;
+  }
+}
+
+function resetCrossword() {
+  for (const input of Object.values(ttsInputMap)) {
+    input.value = '';
+    input.parentElement.classList.remove('correct', 'wrong', 'selected', 'highlighted');
+  }
+  document.querySelectorAll('.tts-clue').forEach(c => c.classList.remove('active'));
+  document.getElementById('tts-feedback').classList.add('hidden');
+  ttsSelectedCell = null;
+  ttsSelectedWord = null;
 }
