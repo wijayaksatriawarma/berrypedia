@@ -131,19 +131,22 @@
               Buah beri adalah kelompok buah yang umumnya berukuran kecil hingga sedang, memiliki warna cerah seperti merah, biru, ungu, atau hitam, serta rasa yang bervariasi dari manis hingga asam. Buah-buahan ini dikenal luas karena kandungan nutrisinya yang tinggi, terutama antioksidan, vitamin, dan serat. Dalam dunia kesehatan, buah beri sering disebut sebagai <span class="text-white font-semibold">superfood</span> karena kemampuannya membantu melindungi tubuh dari kerusakan sel akibat radikal bebas, sekaligus mendukung berbagai fungsi penting tubuh seperti kesehatan jantung, otak, dan sistem imun.
             </p>
 
-            <!-- Berry Tree Images -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-              <div class="rounded-xl overflow-hidden aspect-square">
-                <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=400&fit=crop" alt="Pohon Strawberry" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
-              </div>
-              <div class="rounded-xl overflow-hidden aspect-square">
-                <img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=400&h=400&fit=crop" alt="Pohon Blueberry" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
-              </div>
-              <div class="rounded-xl overflow-hidden aspect-square">
-                <img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=400&h=400&fit=crop" alt="Pohon Raspberry" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
-              </div>
-              <div class="rounded-xl overflow-hidden aspect-square">
-                <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&h=400&fit=crop" alt="Pohon Berry" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <!-- Berry Marquee Images -->
+            <div class="marquee-wrapper mt-8">
+              <div class="marquee-track">
+                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=400&fit=crop" alt="Strawberry" loading="lazy" /></div>
+                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=400&h=400&fit=crop" alt="Blueberry" loading="lazy" /></div>
+                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=400&h=400&fit=crop" alt="Raspberry" loading="lazy" /></div>
+                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&h=400&fit=crop" alt="Blueberry Bowl" loading="lazy" /></div>
+                <div class="marquee-item"><img src="img/blackberry.png" alt="Blackberry" loading="lazy" /></div>
+                <div class="marquee-item"><img src="img/cranberry.png" alt="Cranberry" loading="lazy" /></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=400&fit=crop" alt="Strawberry" loading="lazy" /></div>
+                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=400&h=400&fit=crop" alt="Blueberry" loading="lazy" /></div>
+                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=400&h=400&fit=crop" alt="Raspberry" loading="lazy" /></div>
+                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&h=400&fit=crop" alt="Blueberry Bowl" loading="lazy" /></div>
+                <div class="marquee-item"><img src="img/blackberry.png" alt="Blackberry" loading="lazy" /></div>
+                <div class="marquee-item"><img src="img/cranberry.png" alt="Cranberry" loading="lazy" /></div>
               </div>
             </div>
           </div>
@@ -947,7 +950,7 @@
       </div>
 
       <!-- Game Mode Selector -->
-      <div data-aos="fade-up" data-aos-delay="100" class="flex flex-col sm:flex-row justify-center gap-3 mb-10">
+      <div data-aos="fade-up" data-aos-delay="100" class="flex flex-col sm:flex-row justify-center gap-3 mb-16">
         <button id="tab-quiz" class="game-tab active flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all">
           <i data-lucide="help-circle" class="w-4 h-4"></i>
           Kuis Pilihan Ganda
@@ -955,6 +958,10 @@
         <button id="tab-tts" class="game-tab flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all">
           <i data-lucide="grid-3x3" class="w-4 h-4"></i>
           Teka-Teki Silang
+        </button>
+        <button id="tab-memory" class="game-tab flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+          Flip Card
         </button>
       </div>
 
@@ -972,17 +979,14 @@
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-center" data-game="quiz" data-diff="easy">
                 <div class="text-3xl font-bold text-emerald-400 mb-1">Easy</div>
                 <div class="text-sm text-neutral-400">5 Soal</div>
-                <p class="text-xs text-neutral-500 mt-3">Cocok untuk pemula</p>
               </button>
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-amber-500/10 hover:border-amber-500/30 transition-all text-center" data-game="quiz" data-diff="medium">
                 <div class="text-3xl font-bold text-amber-400 mb-1">Medium</div>
                 <div class="text-sm text-neutral-400">8 Soal</div>
-                <p class="text-xs text-neutral-500 mt-3">Tantangan lebih</p>
               </button>
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-red-500/10 hover:border-red-500/30 transition-all text-center" data-game="quiz" data-diff="hard">
                 <div class="text-3xl font-bold text-red-400 mb-1">Hard</div>
                 <div class="text-sm text-neutral-400">12 Soal</div>
-                <p class="text-xs text-neutral-500 mt-3">Untuk ahli beri!</p>
               </button>
             </div>
           </div>
@@ -1041,17 +1045,14 @@
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-center" data-game="tts" data-diff="easy">
                 <div class="text-3xl font-bold text-emerald-400 mb-1">Easy</div>
                 <div class="text-sm text-neutral-400">3 Kata</div>
-                <p class="text-xs text-neutral-500 mt-3">Grid kecil & mudah</p>
               </button>
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-amber-500/10 hover:border-amber-500/30 transition-all text-center" data-game="tts" data-diff="medium">
                 <div class="text-3xl font-bold text-amber-400 mb-1">Medium</div>
                 <div class="text-sm text-neutral-400">5 Kata</div>
-                <p class="text-xs text-neutral-500 mt-3">Tantangan standar</p>
               </button>
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-red-500/10 hover:border-red-500/30 transition-all text-center" data-game="tts" data-diff="hard">
                 <div class="text-3xl font-bold text-red-400 mb-1">Hard</div>
                 <div class="text-sm text-neutral-400">7 Kata</div>
-                <p class="text-xs text-neutral-500 mt-3">Grid besar & sulit!</p>
               </button>
             </div>
           </div>
@@ -1077,6 +1078,83 @@
               <div id="tts-feedback" class="hidden mt-4"></div>
             </div>
             <div class="flex-1 space-y-6" id="tts-clues"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== MEMORY / FLIP CARD PANEL ===== -->
+      <div id="panel-memory" class="hidden">
+        <!-- Memory Difficulty Selector -->
+        <div id="memory-difficulty" class="max-w-3xl mx-auto">
+          <div class="quiz-card text-center">
+            <div class="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mx-auto mb-5">
+              <i data-lucide="layers" class="w-8 h-8 text-red-400"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Pilih Tingkat Kesulitan</h3>
+            <p class="text-neutral-400 mb-12 text-sm">Temukan semua pasangan kartu buah beri yang identik.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-center" data-game="memory" data-diff="easy">
+                <div class="text-3xl font-bold text-emerald-400 mb-1">Easy</div>
+                <div class="text-sm text-neutral-400">3 Pasang</div>
+              </button>
+              <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-amber-500/10 hover:border-amber-500/30 transition-all text-center" data-game="memory" data-diff="medium">
+                <div class="text-3xl font-bold text-amber-400 mb-1">Medium</div>
+                <div class="text-sm text-neutral-400">4 Pasang</div>
+              </button>
+              <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-red-500/10 hover:border-red-500/30 transition-all text-center" data-game="memory" data-diff="hard">
+                <div class="text-3xl font-bold text-red-400 mb-1">Hard</div>
+                <div class="text-sm text-neutral-400">6 Pasang</div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Memory Game Content -->
+        <div id="memory-content" class="hidden max-w-2xl mx-auto">
+          <div class="quiz-card">
+            <!-- Stats Bar -->
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 text-sm text-neutral-400">
+                  <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+                  <span>Langkah: <span id="memory-moves" class="text-white font-bold">0</span></span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-neutral-400">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span id="memory-timer" class="text-white font-bold">00:00</span>
+                </div>
+              </div>
+              <button id="memory-reset" class="py-2 px-4 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/5 transition-all flex items-center gap-2 text-sm">
+                <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                Reset
+              </button>
+            </div>
+            <!-- Card Grid -->
+            <div id="memory-grid" class="memory-grid"></div>
+          </div>
+        </div>
+
+        <!-- Memory Result -->
+        <div id="memory-result" class="hidden max-w-2xl mx-auto">
+          <div class="quiz-result-card text-center">
+            <div class="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
+              <i data-lucide="party-popper" class="w-10 h-10 text-emerald-400"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-2">Selamat!</h3>
+            <p class="text-neutral-400 mb-6">Kamu berhasil menemukan semua pasangan!</p>
+            <div class="flex justify-center gap-6 mb-8">
+              <div class="text-center">
+                <div id="memory-result-moves" class="text-2xl font-bold text-white">0</div>
+                <div class="text-xs text-neutral-500 mt-1">Langkah</div>
+              </div>
+              <div class="text-center">
+                <div id="memory-result-time" class="text-2xl font-bold text-white">00:00</div>
+                <div class="text-xs text-neutral-500 mt-1">Waktu</div>
+              </div>
+            </div>
+            <button id="memory-play-again" class="px-8 py-3 bg-white text-neutral-950 font-semibold rounded-xl hover:bg-neutral-200 transition-all">
+              Main Lagi
+            </button>
           </div>
         </div>
       </div>

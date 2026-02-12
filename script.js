@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGameTabs();
   initQuiz();
   initCrossword();
+  initMemory();
   initWaveText();
 });
 
@@ -665,33 +666,41 @@ function restartQuiz() {
 // GAME TABS
 // ===========================
 function initGameTabs() {
-  const tabQuiz = document.getElementById('tab-quiz');
-  const tabTts = document.getElementById('tab-tts');
-  const panelQuiz = document.getElementById('panel-quiz');
-  const panelTts = document.getElementById('panel-tts');
+  const tabs = {
+    quiz: document.getElementById('tab-quiz'),
+    tts: document.getElementById('tab-tts'),
+    memory: document.getElementById('tab-memory'),
+  };
+  const panels = {
+    quiz: document.getElementById('panel-quiz'),
+    tts: document.getElementById('panel-tts'),
+    memory: document.getElementById('panel-memory'),
+  };
 
-  tabQuiz.addEventListener('click', () => {
-    tabQuiz.classList.add('active');
-    tabTts.classList.remove('active');
-    panelQuiz.classList.remove('hidden');
-    panelTts.classList.add('hidden');
+  function activateTab(name) {
+    Object.keys(tabs).forEach(key => {
+      tabs[key].classList.toggle('active', key === name);
+      panels[key].classList.toggle('hidden', key !== name);
+    });
 
-    // Reset quiz to difficulty selector
+    // Reset each game to difficulty selector on switch
     document.getElementById('quiz-difficulty').classList.remove('hidden');
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('quiz-result').classList.add('hidden');
-  });
 
-  tabTts.addEventListener('click', () => {
-    tabTts.classList.add('active');
-    tabQuiz.classList.remove('active');
-    panelTts.classList.remove('hidden');
-    panelQuiz.classList.add('hidden');
-
-    // Reset TTS to difficulty selector
     document.getElementById('tts-difficulty').classList.remove('hidden');
     document.getElementById('tts-content').classList.add('hidden');
-  });
+    resetCrossword();
+
+    document.getElementById('memory-difficulty').classList.remove('hidden');
+    document.getElementById('memory-content').classList.add('hidden');
+    document.getElementById('memory-result').classList.add('hidden');
+    resetMemory();
+  }
+
+  tabs.quiz.addEventListener('click', () => activateTab('quiz'));
+  tabs.tts.addEventListener('click', () => activateTab('tts'));
+  tabs.memory.addEventListener('click', () => activateTab('memory'));
 }
 
 // ===========================
@@ -1092,4 +1101,181 @@ function resetCrossword() {
   document.getElementById('tts-feedback').classList.add('hidden');
   ttsSelectedCell = null;
   ttsSelectedWord = null;
+}
+
+// ===========================
+// MEMORY / FLIP CARD GAME
+// ===========================
+const memoryBerries = [
+  { id: 'strawberry', name: 'Strawberry', img: 'img/logo-strawberry.png' },
+  { id: 'blueberry', name: 'Blueberry', img: 'img/logo-blueberry.png' },
+  { id: 'raspberry', name: 'Raspberry', img: 'img/logo-raspberry.png' },
+  { id: 'blackberry', name: 'Blackberry', img: 'img/logo-blackberry.png' },
+  { id: 'cranberry', name: 'Cranberry', img: 'img/logo-cranberry.png' },
+  { id: 'acaiberry', name: 'Acai Berry', img: 'img/logo-acaiberry.png' },
+];
+
+const memoryDiffConfig = {
+  easy:   { pairs: 3, cols: 3 },
+  medium: { pairs: 4, cols: 4 },
+  hard:   { pairs: 6, cols: 4 },
+};
+
+let memoryCards = [];
+let memoryFlipped = [];
+let memoryMatched = 0;
+let memoryMoves = 0;
+let memoryLocked = false;
+let memoryTimerInterval = null;
+let memorySeconds = 0;
+let memoryTotalPairs = 0;
+let memoryCurrentDiff = 'easy';
+
+function initMemory() {
+  document.querySelectorAll('.diff-btn[data-game="memory"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      startMemory(btn.dataset.diff);
+    });
+  });
+
+  document.getElementById('memory-reset').addEventListener('click', () => {
+    startMemory(memoryCurrentDiff);
+  });
+
+  document.getElementById('memory-play-again').addEventListener('click', () => {
+    document.getElementById('memory-result').classList.add('hidden');
+    document.getElementById('memory-difficulty').classList.remove('hidden');
+  });
+}
+
+function startMemory(difficulty) {
+  memoryCurrentDiff = difficulty;
+  const config = memoryDiffConfig[difficulty];
+  memoryTotalPairs = config.pairs;
+  memoryMoves = 0;
+  memoryMatched = 0;
+  memoryFlipped = [];
+  memoryLocked = false;
+  memorySeconds = 0;
+
+  document.getElementById('memory-moves').textContent = '0';
+  document.getElementById('memory-timer').textContent = '00:00';
+
+  document.getElementById('memory-difficulty').classList.add('hidden');
+  document.getElementById('memory-content').classList.remove('hidden');
+  document.getElementById('memory-result').classList.add('hidden');
+
+  // Pick random berries for this difficulty
+  const shuffledBerries = [...memoryBerries].sort(() => Math.random() - 0.5);
+  const selected = shuffledBerries.slice(0, config.pairs);
+
+  // Create pairs and shuffle
+  memoryCards = [...selected, ...selected]
+    .sort(() => Math.random() - 0.5)
+    .map((berry, i) => ({ ...berry, index: i }));
+
+  buildMemoryGrid(config.cols);
+  startMemoryTimer();
+  lucide.createIcons();
+}
+
+function buildMemoryGrid(cols) {
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML = '';
+  grid.className = 'memory-grid cols-' + cols;
+
+  memoryCards.forEach((berry, i) => {
+    const card = document.createElement('div');
+    card.className = 'memory-card';
+    card.dataset.index = i;
+    card.dataset.berryId = berry.id;
+    card.innerHTML = `
+      <div class="memory-card-inner">
+        <div class="memory-card-front">
+          <i data-lucide="help-circle" class="w-8 h-8"></i>
+        </div>
+        <div class="memory-card-back">
+          <img src="${berry.img}" alt="${berry.name}" />
+        </div>
+      </div>`;
+    card.addEventListener('click', () => flipCard(card));
+    grid.appendChild(card);
+  });
+}
+
+function flipCard(card) {
+  if (memoryLocked) return;
+  if (card.classList.contains('flipped')) return;
+  if (card.classList.contains('matched')) return;
+  if (memoryFlipped.length >= 2) return;
+
+  card.classList.add('flipped');
+  memoryFlipped.push(card);
+
+  if (memoryFlipped.length === 2) {
+    memoryMoves++;
+    document.getElementById('memory-moves').textContent = memoryMoves;
+    checkMemoryMatch();
+  }
+}
+
+function checkMemoryMatch() {
+  const [card1, card2] = memoryFlipped;
+  const match = card1.dataset.berryId === card2.dataset.berryId;
+
+  if (match) {
+    card1.classList.add('matched', 'locked');
+    card2.classList.add('matched', 'locked');
+    memoryMatched++;
+    memoryFlipped = [];
+
+    if (memoryMatched === memoryTotalPairs) {
+      setTimeout(completeMemory, 600);
+    }
+  } else {
+    memoryLocked = true;
+    card1.classList.add('no-match');
+    card2.classList.add('no-match');
+    setTimeout(() => {
+      card1.classList.remove('flipped', 'no-match');
+      card2.classList.remove('flipped', 'no-match');
+      memoryFlipped = [];
+      memoryLocked = false;
+    }, 800);
+  }
+}
+
+function startMemoryTimer() {
+  clearInterval(memoryTimerInterval);
+  memoryTimerInterval = setInterval(() => {
+    memorySeconds++;
+    const mins = String(Math.floor(memorySeconds / 60)).padStart(2, '0');
+    const secs = String(memorySeconds % 60).padStart(2, '0');
+    document.getElementById('memory-timer').textContent = mins + ':' + secs;
+  }, 1000);
+}
+
+function completeMemory() {
+  clearInterval(memoryTimerInterval);
+  const mins = String(Math.floor(memorySeconds / 60)).padStart(2, '0');
+  const secs = String(memorySeconds % 60).padStart(2, '0');
+  const timeStr = mins + ':' + secs;
+
+  document.getElementById('memory-content').classList.add('hidden');
+  document.getElementById('memory-result').classList.remove('hidden');
+  document.getElementById('memory-result-moves').textContent = memoryMoves;
+  document.getElementById('memory-result-time').textContent = timeStr;
+  lucide.createIcons();
+}
+
+function resetMemory() {
+  clearInterval(memoryTimerInterval);
+  memoryCards = [];
+  memoryFlipped = [];
+  memoryMatched = 0;
+  memoryMoves = 0;
+  memoryLocked = false;
+  memorySeconds = 0;
+  const grid = document.getElementById('memory-grid');
+  if (grid) grid.innerHTML = '';
 }

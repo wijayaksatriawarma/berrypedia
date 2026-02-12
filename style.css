@@ -112,6 +112,61 @@ body {
 }
 
 /* ===========================
+   MARQUEE / INFINITE SCROLL
+   =========================== */
+.marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.marquee-item:hover img {
+  transform: scale(1.08);
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .marquee-item {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* ===========================
    BERRY CARDS
    =========================== */
 .berry-card {
@@ -809,6 +864,109 @@ body {
 
 .result-star.empty {
   color: #404040;
+}
+
+/* ===========================
+   MEMORY / FLIP CARD
+   =========================== */
+.memory-grid {
+  display: grid;
+  gap: 12px;
+  justify-content: center;
+}
+
+.memory-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.memory-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.memory-card {
+  aspect-ratio: 1;
+  perspective: 600px;
+  cursor: pointer;
+}
+
+.memory-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+}
+
+.memory-card.flipped .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card-front,
+.memory-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.memory-card-front {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.memory-card-front:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.memory-card-front i {
+  color: #525252;
+}
+
+.memory-card-back {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(251, 113, 133, 0.08));
+  border-color: rgba(239, 68, 68, 0.2);
+  transform: rotateY(180deg);
+  padding: 16px;
+}
+
+.memory-card-back img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.memory-card.matched .memory-card-back {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(74, 222, 128, 0.1));
+  border-color: rgba(34, 197, 94, 0.4);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+}
+
+.memory-card.matched {
+  animation: memory-match-pop 0.4s ease;
+}
+
+@keyframes memory-match-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.memory-card.no-match .memory-card-back {
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.memory-card.locked {
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .memory-grid {
+    gap: 8px;
+  }
+
+  .memory-card-back {
+    padding: 10px;
+  }
 }
 
 /* ===========================
