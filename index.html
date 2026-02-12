@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jenis-Jenis Buah Beri | Edukasi Interaktif</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- AOS - Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-neutral-950 text-white font-sans">
+
+  <!-- ============ NAVBAR ============ -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-red-500 to-rose-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+          <i data-lucide="cherry" class="w-5 h-5 text-white"></i>
+        </div>
+        <span class="text-lg font-bold tracking-tight">Berry<span class="text-red-400">Pedia</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
+        <a href="#about" class="nav-link hover:text-white transition-colors">Pengenalan</a>
+        <a href="#berries" class="nav-link hover:text-white transition-colors">Jenis Beri</a>
+        <a href="#benefits" class="nav-link hover:text-white transition-colors">Manfaat</a>
+        <a href="#nutrition" class="nav-link hover:text-white transition-colors">Nutrisi</a>
+        <a href="#video" class="nav-link hover:text-white transition-colors">Video</a>
+        <a href="#quiz" class="nav-link hover:text-white transition-colors">Kuis</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden hidden">
+      <div class="px-6 py-4 border-t border-white/10 bg-neutral-950/95 backdrop-blur-xl space-y-3">
+        <a href="#about" class="block py-2 text-neutral-400 hover:text-white transition-colors mobile-nav-link">Pengenalan</a>
+        <a href="#berries" class="block py-2 text-neutral-400 hover:text-white transition-colors mobile-nav-link">Jenis Beri</a>
+        <a href="#benefits" class="block py-2 text-neutral-400 hover:text-white transition-colors mobile-nav-link">Manfaat</a>
+        <a href="#nutrition" class="block py-2 text-neutral-400 hover:text-white transition-colors mobile-nav-link">Nutrisi</a>
+        <a href="#video" class="block py-2 text-neutral-400 hover:text-white transition-colors mobile-nav-link">Video</a>
+        <a href="#quiz" class="block py-2 text-neutral-400 hover:text-white transition-colors mobile-nav-link">Kuis</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Elements -->
+    <div class="hero-bg-grid"></div>
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-red-500/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-rose-400/10 rounded-full blur-[120px]"></div>
+
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <div data-aos="fade-down" data-aos-duration="800" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-sm text-neutral-400 mb-8">
+        <i data-lucide="sparkles" class="w-4 h-4 text-red-400"></i>
+        <span>Edukasi Interaktif</span>
+      </div>
+
+      <h1 data-aos="fade-up" data-aos-duration="1000" class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-tight mb-6">
+        Dunia <span class="hero-gradient-text">Buah Beri</span>
+      </h1>
+
+      <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Jelajahi keajaiban nutrisi dan fakta unik dari berbagai jenis buah beri yang bermanfaat bagi kesehatan tubuh Anda.
+      </p>
+
+      <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#berries" class="group px-8 py-4 bg-white text-neutral-950 font-semibold rounded-xl hover:bg-neutral-200 transition-all flex items-center gap-2">
+          Mulai Jelajahi
+          <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+        </a>
+        <a href="#quiz" class="px-8 py-4 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/5 transition-all">
+          Ikuti Kuis
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+      <div class="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2">
+        <div class="w-1 h-3 bg-white/40 rounded-full animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT BERRIES SECTION ============ -->
+  <section id="about" class="relative py-16 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-red-400 mb-4">Pengenalan</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Apa Itu Buah Beri?</h2>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="150" class="relative">
+        <!-- Glassmorphism Card -->
+        <div class="relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-12 overflow-hidden">
+          <!-- Decorative Accent -->
+          <div class="absolute -top-20 -right-20 w-56 h-56 bg-red-500/8 rounded-full blur-[80px] pointer-events-none"></div>
+          <div class="absolute -bottom-20 -left-20 w-56 h-56 bg-rose-400/8 rounded-full blur-[80px] pointer-events-none"></div>
+
+          <div class="relative">
+            <p class="text-neutral-300 text-base md:text-lg leading-relaxed text-center">
+              Buah beri adalah kelompok buah yang umumnya berukuran kecil hingga sedang, memiliki warna cerah seperti merah, biru, ungu, atau hitam, serta rasa yang bervariasi dari manis hingga asam. Buah-buahan ini dikenal luas karena kandungan nutrisinya yang tinggi, terutama antioksidan, vitamin, dan serat. Dalam dunia kesehatan, buah beri sering disebut sebagai <span class="text-white font-semibold">superfood</span> karena kemampuannya membantu melindungi tubuh dari kerusakan sel akibat radikal bebas, sekaligus mendukung berbagai fungsi penting tubuh seperti kesehatan jantung, otak, dan sistem imun.
+            </p>
+
+            <!-- Berry Tree Images -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              <div class="rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=400&fit=crop" alt="Pohon Strawberry" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              <div class="rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=400&h=400&fit=crop" alt="Pohon Blueberry" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              <div class="rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=400&h=400&fit=crop" alt="Pohon Raspberry" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              <div class="rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&h=400&fit=crop" alt="Pohon Berry" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BERRIES SECTION ============ -->
+  <section id="berries" class="relative py-16 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-red-400 mb-4">Koleksi</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Jenis-Jenis Buah Beri</h2>
+        <p class="text-neutral-400 max-w-xl mx-auto">Klik pada kartu untuk melihat detail nutrisi dan fakta unik setiap buah beri.</p>
+      </div>
+
+      <!-- Berry Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="berry-grid">
+
+        <!-- Strawberry -->
+        <div class="berry-card group cursor-pointer" data-berry="strawberry" data-aos="fade-up" data-aos-delay="0">
+          <div class="berry-card-inner">
+            <div class="berry-card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=600&h=400&fit=crop" alt="Strawberry" class="berry-card-img" loading="lazy" />
+              <div class="berry-card-overlay"></div>
+              <div class="berry-card-badge bg-red-500">Populer</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
+                  <i data-lucide="heart" class="w-5 h-5 text-red-400"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold">Strawberry</h3>
+                  <p class="text-xs text-neutral-500">Fragaria × ananassa</p>
+                </div>
+              </div>
+              <p class="text-sm text-neutral-400 leading-relaxed mb-4">Buah beri merah yang kaya vitamin C dan antioksidan, populer di seluruh dunia.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Vitamin C</span>
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Antioksidan</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600 group-hover:text-red-400 transition-colors"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blueberry -->
+        <div class="berry-card group cursor-pointer" data-berry="blueberry" data-aos="fade-up" data-aos-delay="100">
+          <div class="berry-card-inner">
+            <div class="berry-card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=600&h=400&fit=crop" alt="Blueberry" class="berry-card-img" loading="lazy" />
+              <div class="berry-card-overlay"></div>
+              <div class="berry-card-badge bg-indigo-500">Superfood</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center">
+                  <i data-lucide="brain" class="w-5 h-5 text-indigo-400"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold">Blueberry</h3>
+                  <p class="text-xs text-neutral-500">Vaccinium corymbosum</p>
+                </div>
+              </div>
+              <p class="text-sm text-neutral-400 leading-relaxed mb-4">Dijuluki superfood karena kandungan antioksidan tertinggi di antara semua buah.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Antosianin</span>
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Otak</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600 group-hover:text-indigo-400 transition-colors"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Raspberry -->
+        <div class="berry-card group cursor-pointer" data-berry="raspberry" data-aos="fade-up" data-aos-delay="200">
+          <div class="berry-card-inner">
+            <div class="berry-card-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=600&h=400&fit=crop" alt="Raspberry" class="berry-card-img" loading="lazy" />
+              <div class="berry-card-overlay"></div>
+              <div class="berry-card-badge bg-rose-500">Serat Tinggi</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center">
+                  <i data-lucide="zap" class="w-5 h-5 text-rose-400"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold">Raspberry</h3>
+                  <p class="text-xs text-neutral-500">Rubus idaeus</p>
+                </div>
+              </div>
+              <p class="text-sm text-neutral-400 leading-relaxed mb-4">Buah beri dengan serat sangat tinggi dan rasa asam manis yang khas.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Serat</span>
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Mangan</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600 group-hover:text-rose-400 transition-colors"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blackberry -->
+        <div class="berry-card group cursor-pointer" data-berry="blackberry" data-aos="fade-up" data-aos-delay="0">
+          <div class="berry-card-inner">
+            <div class="berry-card-img-wrapper">
+              <img src="img/blackberry.png" alt="Blackberry" class="berry-card-img" loading="lazy" />
+              <div class="berry-card-overlay"></div>
+              <div class="berry-card-badge bg-violet-500">Vitamin K</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center">
+                  <i data-lucide="shield" class="w-5 h-5 text-violet-400"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold">Blackberry</h3>
+                  <p class="text-xs text-neutral-500">Rubus fruticosus</p>
+                </div>
+              </div>
+              <p class="text-sm text-neutral-400 leading-relaxed mb-4">Buah beri hitam keunguan yang kaya vitamin K dan mendukung kesehatan tulang.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Vitamin K</span>
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Tulang</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600 group-hover:text-violet-400 transition-colors"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cranberry -->
+        <div class="berry-card group cursor-pointer" data-berry="cranberry" data-aos="fade-up" data-aos-delay="100">
+          <div class="berry-card-inner">
+            <div class="berry-card-img-wrapper">
+              <img src="img/cranberry.png" alt="Cranberry" class="berry-card-img" loading="lazy" />
+              <div class="berry-card-overlay"></div>
+              <div class="berry-card-badge bg-orange-500">Saluran Kemih</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center">
+                  <i data-lucide="droplets" class="w-5 h-5 text-orange-400"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold">Cranberry</h3>
+                  <p class="text-xs text-neutral-500">Vaccinium macrocarpon</p>
+                </div>
+              </div>
+              <p class="text-sm text-neutral-400 leading-relaxed mb-4">Dikenal luas untuk manfaatnya dalam menjaga kesehatan saluran kemih.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Proantosianin</span>
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">UTI</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600 group-hover:text-orange-400 transition-colors"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acai Berry -->
+        <div class="berry-card group cursor-pointer" data-berry="acai" data-aos="fade-up" data-aos-delay="200">
+          <div class="berry-card-inner">
+            <div class="berry-card-img-wrapper">
+              <img src="img/accaiberry.png" alt="Acai Berry" class="berry-card-img" loading="lazy" />
+              <div class="berry-card-overlay"></div>
+              <div class="berry-card-badge bg-purple-500">Anti-Aging</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                  <i data-lucide="leaf" class="w-5 h-5 text-purple-400"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold">Acai Berry</h3>
+                  <p class="text-xs text-neutral-500">Euterpe oleracea</p>
+                </div>
+              </div>
+              <p class="text-sm text-neutral-400 leading-relaxed mb-4">Buah eksotis dari Amazon yang terkenal sebagai superfood anti-penuaan.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Omega</span>
+                  <span class="px-2 py-1 text-[10px] font-medium bg-white/5 rounded-md text-neutral-400">Anti-Aging</span>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-600 group-hover:text-purple-400 transition-colors"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODAL ============ -->
+  <div id="berry-modal" class="modal-overlay hidden">
+    <div class="modal-container" id="modal-content">
+      <button id="modal-close" class="modal-close-btn">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="modal-img-wrapper">
+        <img id="modal-img" src="" alt="" class="modal-img" />
+        <div class="modal-img-gradient"></div>
+      </div>
+
+      <div class="p-6 md:p-8">
+        <div class="flex items-center gap-3 mb-2">
+          <span id="modal-badge" class="px-3 py-1 text-xs font-semibold rounded-full"></span>
+        </div>
+        <h3 id="modal-title" class="text-2xl md:text-3xl font-display font-bold mb-1"></h3>
+        <p id="modal-latin" class="text-sm text-neutral-500 italic mb-6"></p>
+
+        <p id="modal-desc" class="text-neutral-300 leading-relaxed mb-6"></p>
+
+        <!-- Nutrition Grid -->
+        <div class="mb-6">
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-neutral-500 mb-3">Kandungan Nutrisi (per 100g)</h4>
+          <div id="modal-nutrition" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+        </div>
+
+        <!-- Fun Facts -->
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-neutral-500 mb-3">Fakta Unik</h4>
+          <ul id="modal-facts" class="space-y-2"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEALTH BENEFITS SECTION ============ -->
+  <section id="benefits" class="relative py-16 md:py-32 bg-neutral-900/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-red-400 mb-4">Kesehatan</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Manfaat Buah Beri</h2>
+        <p class="text-neutral-400 max-w-xl mx-auto">Berbagai manfaat luar biasa yang bisa Anda dapatkan dari rutin mengonsumsi buah beri.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="150">
+
+        <!-- Jantung -->
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="heart-pulse" class="w-6 h-6 text-red-400"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Kesehatan Jantung</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed">Antioksidan dan serat dalam buah beri membantu menurunkan tekanan darah, mengurangi kolesterol jahat (LDL), dan menjaga elastisitas pembuluh darah.</p>
+        </div>
+
+        <!-- Otak -->
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="brain" class="w-6 h-6 text-indigo-400"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Fungsi Otak</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed">Anthocyanin dalam beri meningkatkan daya ingat, memperlambat penurunan kognitif, dan membantu komunikasi antar sel-sel saraf di otak.</p>
+        </div>
+
+        <!-- Imun -->
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="shield-check" class="w-6 h-6 text-emerald-400"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Sistem Imun</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed">Kandungan vitamin C yang tinggi memperkuat sistem kekebalan tubuh, membantu melawan infeksi, dan mempercepat proses penyembuhan.</p>
+        </div>
+
+        <!-- Kulit -->
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="sparkles" class="w-6 h-6 text-rose-400"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Kesehatan Kulit</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed">Antioksidan melindungi kulit dari kerusakan akibat sinar UV dan radikal bebas, serta merangsang produksi kolagen untuk kulit tetap elastis.</p>
+        </div>
+
+        <!-- Pencernaan -->
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="salad" class="w-6 h-6 text-amber-400"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Pencernaan</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed">Serat larut dan tidak larut dalam beri melancarkan pencernaan, mencegah sembelit, dan mendukung pertumbuhan bakteri baik di usus.</p>
+        </div>
+
+        <!-- Mata -->
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-white/[0.06] transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="eye" class="w-6 h-6 text-cyan-400"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Kesehatan Mata</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed">Lutein dan zeaxanthin dalam beri melindungi retina dari kerusakan, mengurangi risiko degenerasi makula, dan menjaga ketajaman penglihatan.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NUTRITION COMPARISON SECTION ============ -->
+  <section id="nutrition" class="relative py-16 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-red-400 mb-4">Nutrisi</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Perbandingan Nutrisi</h2>
+        <p class="text-neutral-400 max-w-xl mx-auto">Bandingkan kandungan nutrisi per 100 gram dari setiap jenis buah beri.</p>
+      </div>
+
+      <!-- Table Wrapper -->
+      <div data-aos="fade-up" data-aos-delay="150" class="overflow-x-auto -mx-2 px-2">
+        <div class="min-w-[520px]">
+          <!-- Table Header -->
+          <div class="grid grid-cols-5 gap-3 mb-3 px-4">
+            <div class="text-sm font-semibold text-neutral-500">Buah Beri</div>
+            <div class="text-sm font-semibold text-neutral-500 text-center">Kalori</div>
+            <div class="text-sm font-semibold text-neutral-500 text-center">Vitamin C</div>
+            <div class="text-sm font-semibold text-neutral-500 text-center">Serat</div>
+            <div class="text-sm font-semibold text-neutral-500 text-center">Gula</div>
+          </div>
+
+          <!-- Strawberry -->
+          <div class="nutrisi-row mb-2" data-berry-nutrisi="strawberry">
+            <div class="grid grid-cols-5 gap-3 items-center bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-4 hover:bg-white/[0.06] transition-colors cursor-pointer nutrisi-header">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="heart" class="w-4 h-4 text-red-400"></i>
+                </div>
+                <span class="font-semibold text-sm">Strawberry</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-600 nutrisi-chevron transition-transform"></i>
+              </div>
+              <div class="text-center"><span class="text-white font-bold">32</span> <span class="text-neutral-500 text-xs">kkal</span></div>
+              <div class="text-center"><span class="text-white font-bold">58.8</span> <span class="text-neutral-500 text-xs">mg</span></div>
+              <div class="text-center"><span class="text-white font-bold">2.0</span> <span class="text-neutral-500 text-xs">g</span></div>
+              <div class="text-center"><span class="text-white font-bold">4.9</span> <span class="text-neutral-500 text-xs">g</span></div>
+            </div>
+            <div class="nutrisi-dropdown">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-4 pt-3 pb-4">
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Protein</span><span class="text-white font-bold text-sm">0.7g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Lemak</span><span class="text-white font-bold text-sm">0.3g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Karbohidrat</span><span class="text-white font-bold text-sm">7.7g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Folat</span><span class="text-white font-bold text-sm">24µg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Kalium</span><span class="text-white font-bold text-sm">153mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Mangan</span><span class="text-white font-bold text-sm">0.39mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Magnesium</span><span class="text-white font-bold text-sm">13mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin B6</span><span class="text-white font-bold text-sm">0.05mg</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blueberry -->
+          <div class="nutrisi-row mb-2" data-berry-nutrisi="blueberry">
+            <div class="grid grid-cols-5 gap-3 items-center bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-4 hover:bg-white/[0.06] transition-colors cursor-pointer nutrisi-header">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="brain" class="w-4 h-4 text-indigo-400"></i>
+                </div>
+                <span class="font-semibold text-sm">Blueberry</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-600 nutrisi-chevron transition-transform"></i>
+              </div>
+              <div class="text-center"><span class="text-white font-bold">57</span> <span class="text-neutral-500 text-xs">kkal</span></div>
+              <div class="text-center"><span class="text-white font-bold">9.7</span> <span class="text-neutral-500 text-xs">mg</span></div>
+              <div class="text-center"><span class="text-white font-bold">2.4</span> <span class="text-neutral-500 text-xs">g</span></div>
+              <div class="text-center"><span class="text-white font-bold">10.0</span> <span class="text-neutral-500 text-xs">g</span></div>
+            </div>
+            <div class="nutrisi-dropdown">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-4 pt-3 pb-4">
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Protein</span><span class="text-white font-bold text-sm">0.7g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Lemak</span><span class="text-white font-bold text-sm">0.3g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Karbohidrat</span><span class="text-white font-bold text-sm">14.5g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin K</span><span class="text-white font-bold text-sm">19.3µg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Kalium</span><span class="text-white font-bold text-sm">77mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Mangan</span><span class="text-white font-bold text-sm">0.34mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin E</span><span class="text-white font-bold text-sm">0.57mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Zat Besi</span><span class="text-white font-bold text-sm">0.28mg</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Raspberry -->
+          <div class="nutrisi-row mb-2" data-berry-nutrisi="raspberry">
+            <div class="grid grid-cols-5 gap-3 items-center bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-4 hover:bg-white/[0.06] transition-colors cursor-pointer nutrisi-header">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="zap" class="w-4 h-4 text-rose-400"></i>
+                </div>
+                <span class="font-semibold text-sm">Raspberry</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-600 nutrisi-chevron transition-transform"></i>
+              </div>
+              <div class="text-center"><span class="text-white font-bold">52</span> <span class="text-neutral-500 text-xs">kkal</span></div>
+              <div class="text-center"><span class="text-white font-bold">26.2</span> <span class="text-neutral-500 text-xs">mg</span></div>
+              <div class="text-center"><span class="text-white font-bold">6.5</span> <span class="text-neutral-500 text-xs">g</span></div>
+              <div class="text-center"><span class="text-white font-bold">4.4</span> <span class="text-neutral-500 text-xs">g</span></div>
+            </div>
+            <div class="nutrisi-dropdown">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-4 pt-3 pb-4">
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Protein</span><span class="text-white font-bold text-sm">1.2g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Lemak</span><span class="text-white font-bold text-sm">0.7g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Karbohidrat</span><span class="text-white font-bold text-sm">11.9g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Mangan</span><span class="text-white font-bold text-sm">0.67mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Kalium</span><span class="text-white font-bold text-sm">151mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin K</span><span class="text-white font-bold text-sm">7.8µg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Magnesium</span><span class="text-white font-bold text-sm">22mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Fosfor</span><span class="text-white font-bold text-sm">29mg</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blackberry -->
+          <div class="nutrisi-row mb-2" data-berry-nutrisi="blackberry">
+            <div class="grid grid-cols-5 gap-3 items-center bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-4 hover:bg-white/[0.06] transition-colors cursor-pointer nutrisi-header">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="shield" class="w-4 h-4 text-violet-400"></i>
+                </div>
+                <span class="font-semibold text-sm">Blackberry</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-600 nutrisi-chevron transition-transform"></i>
+              </div>
+              <div class="text-center"><span class="text-white font-bold">43</span> <span class="text-neutral-500 text-xs">kkal</span></div>
+              <div class="text-center"><span class="text-white font-bold">21.0</span> <span class="text-neutral-500 text-xs">mg</span></div>
+              <div class="text-center"><span class="text-white font-bold">5.3</span> <span class="text-neutral-500 text-xs">g</span></div>
+              <div class="text-center"><span class="text-white font-bold">4.9</span> <span class="text-neutral-500 text-xs">g</span></div>
+            </div>
+            <div class="nutrisi-dropdown">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-4 pt-3 pb-4">
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Protein</span><span class="text-white font-bold text-sm">1.4g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Lemak</span><span class="text-white font-bold text-sm">0.5g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Karbohidrat</span><span class="text-white font-bold text-sm">9.6g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin K</span><span class="text-white font-bold text-sm">19.8µg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Kalium</span><span class="text-white font-bold text-sm">162mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Mangan</span><span class="text-white font-bold text-sm">0.65mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin E</span><span class="text-white font-bold text-sm">1.17mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Zat Besi</span><span class="text-white font-bold text-sm">0.62mg</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cranberry -->
+          <div class="nutrisi-row mb-2" data-berry-nutrisi="cranberry">
+            <div class="grid grid-cols-5 gap-3 items-center bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-4 hover:bg-white/[0.06] transition-colors cursor-pointer nutrisi-header">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="droplets" class="w-4 h-4 text-orange-400"></i>
+                </div>
+                <span class="font-semibold text-sm">Cranberry</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-600 nutrisi-chevron transition-transform"></i>
+              </div>
+              <div class="text-center"><span class="text-white font-bold">46</span> <span class="text-neutral-500 text-xs">kkal</span></div>
+              <div class="text-center"><span class="text-white font-bold">14.0</span> <span class="text-neutral-500 text-xs">mg</span></div>
+              <div class="text-center"><span class="text-white font-bold">4.6</span> <span class="text-neutral-500 text-xs">g</span></div>
+              <div class="text-center"><span class="text-white font-bold">4.0</span> <span class="text-neutral-500 text-xs">g</span></div>
+            </div>
+            <div class="nutrisi-dropdown">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-4 pt-3 pb-4">
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Protein</span><span class="text-white font-bold text-sm">0.4g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Lemak</span><span class="text-white font-bold text-sm">0.1g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Karbohidrat</span><span class="text-white font-bold text-sm">12.2g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin E</span><span class="text-white font-bold text-sm">1.2mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Kalium</span><span class="text-white font-bold text-sm">85mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin K</span><span class="text-white font-bold text-sm">5.1µg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Kalsium</span><span class="text-white font-bold text-sm">8mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Fosfor</span><span class="text-white font-bold text-sm">13mg</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Acai Berry -->
+          <div class="nutrisi-row mb-2" data-berry-nutrisi="acai">
+            <div class="grid grid-cols-5 gap-3 items-center bg-white/[0.03] border border-white/[0.06] rounded-xl px-4 py-4 hover:bg-white/[0.06] transition-colors cursor-pointer nutrisi-header">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="leaf" class="w-4 h-4 text-purple-400"></i>
+                </div>
+                <span class="font-semibold text-sm">Acai Berry</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-600 nutrisi-chevron transition-transform"></i>
+              </div>
+              <div class="text-center"><span class="text-white font-bold">70</span> <span class="text-neutral-500 text-xs">kkal</span></div>
+              <div class="text-center"><span class="text-white font-bold">0.5</span> <span class="text-neutral-500 text-xs">mg</span></div>
+              <div class="text-center"><span class="text-white font-bold">3.5</span> <span class="text-neutral-500 text-xs">g</span></div>
+              <div class="text-center"><span class="text-white font-bold">2.0</span> <span class="text-neutral-500 text-xs">g</span></div>
+            </div>
+            <div class="nutrisi-dropdown">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-4 pt-3 pb-4">
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Protein</span><span class="text-white font-bold text-sm">1.0g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Lemak Sehat</span><span class="text-white font-bold text-sm">5.0g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Karbohidrat</span><span class="text-white font-bold text-sm">4.0g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Omega-3</span><span class="text-white font-bold text-sm">0.5g</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Kalsium</span><span class="text-white font-bold text-sm">35mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Zat Besi</span><span class="text-white font-bold text-sm">0.5mg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Vitamin A</span><span class="text-white font-bold text-sm">15µg</span></div>
+                <div class="nutrisi-extra-item"><span class="text-neutral-500 text-xs">Kalium</span><span class="text-white font-bold text-sm">105mg</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Highlight Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center">
+          <div class="text-2xl font-bold text-red-400 mb-1">Strawberry</div>
+          <p class="text-xs text-neutral-500">Vitamin C Tertinggi</p>
+          <p class="text-sm text-neutral-400 mt-1">58.8 mg per 100g</p>
+        </div>
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center">
+          <div class="text-2xl font-bold text-rose-400 mb-1">Raspberry</div>
+          <p class="text-xs text-neutral-500">Serat Tertinggi</p>
+          <p class="text-sm text-neutral-400 mt-1">6.5 g per 100g</p>
+        </div>
+        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center">
+          <div class="text-2xl font-bold text-orange-400 mb-1">Cranberry</div>
+          <p class="text-xs text-neutral-500">Gula Terendah</p>
+          <p class="text-sm text-neutral-400 mt-1">4.0 g per 100g</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO SECTION ============ -->
+  <section id="video" class="relative py-16 md:py-32 bg-neutral-900/50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-red-400 mb-4">Video</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Pelajari Lewat Video</h2>
+        <p class="text-neutral-400 max-w-xl mx-auto">Tonton video edukatif tentang manfaat luar biasa buah beri bagi kesehatan.</p>
+      </div>
+
+      <!-- Video Carousel -->
+      <div data-aos="fade-up" data-aos-delay="200" class="relative">
+        <div id="video-carousel" class="video-carousel-3d">
+
+          <div class="video-slide" data-index="0">
+            <div class="video-slide-label">Manfaat Buah Beri</div>
+            <div class="video-wrapper">
+              <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/F1pABq1GBzs" title="Manfaat Buah Beri untuk Kesehatan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-slide" data-index="1">
+            <div class="video-slide-label">Jenis Buah Beri</div>
+            <div class="video-wrapper">
+              <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/YDhMA0mHpjI" title="Jenis-Jenis Buah Beri di Dunia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-slide" data-index="2">
+            <div class="video-slide-label">Fakta Unik Beri</div>
+            <div class="video-wrapper">
+              <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/vN2JGShb1kg" title="Fakta Unik Buah Beri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Dots -->
+        <div class="flex justify-center gap-2 mt-6 sm:mt-8">
+          <button class="video-dot active w-2.5 h-2.5 rounded-full bg-white transition-all" data-index="0"></button>
+          <button class="video-dot w-2.5 h-2.5 rounded-full bg-white/20 transition-all" data-index="1"></button>
+          <button class="video-dot w-2.5 h-2.5 rounded-full bg-white/20 transition-all" data-index="2"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GAME SECTION ============ -->
+  <section id="quiz" class="relative py-16 md:py-32">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-red-400 mb-4">Mini Game</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Uji Pengetahuanmu</h2>
+        <p class="text-neutral-400 max-w-xl mx-auto">Pilih tantangan favoritmu: kuis pilihan ganda atau teka-teki silang!</p>
+      </div>
+
+      <!-- Game Mode Selector -->
+      <div data-aos="fade-up" data-aos-delay="100" class="flex flex-col sm:flex-row justify-center gap-3 mb-10">
+        <button id="tab-quiz" class="game-tab active flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all">
+          <i data-lucide="help-circle" class="w-4 h-4"></i>
+          Kuis Pilihan Ganda
+        </button>
+        <button id="tab-tts" class="game-tab flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all">
+          <i data-lucide="grid-3x3" class="w-4 h-4"></i>
+          Teka-Teki Silang
+        </button>
+      </div>
+
+      <!-- ===== QUIZ PANEL ===== -->
+      <div id="panel-quiz" data-aos="fade-up" data-aos-delay="200">
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="max-w-3xl mx-auto">
+          <div class="quiz-progress-wrapper mb-8">
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-neutral-400">Pertanyaan <span id="quiz-current">1</span> dari 5</span>
+              <span class="text-neutral-400">Skor: <span id="quiz-score-display">0</span></span>
+            </div>
+            <div class="quiz-progress-bar">
+              <div id="quiz-progress" class="quiz-progress-fill" style="width: 20%"></div>
+            </div>
+          </div>
+          <div class="quiz-card">
+            <h3 id="quiz-question" class="text-xl md:text-2xl font-bold mb-6"></h3>
+            <div id="quiz-options" class="space-y-3"></div>
+            <div id="quiz-feedback" class="hidden mt-6"></div>
+            <button id="quiz-next" class="hidden mt-6 w-full py-3 bg-white text-neutral-950 font-semibold rounded-xl hover:bg-neutral-200 transition-all">
+              Pertanyaan Selanjutnya
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Result -->
+        <div id="quiz-result" class="hidden max-w-3xl mx-auto">
+          <div class="quiz-result-card text-center">
+            <div id="result-icon" class="mx-auto mb-6"></div>
+            <h3 class="text-3xl font-display font-bold mb-2">Kuis Selesai!</h3>
+            <p id="result-text" class="text-neutral-400 mb-4"></p>
+            <div class="text-6xl font-bold mb-6">
+              <span id="result-score">0</span><span class="text-neutral-600">/5</span>
+            </div>
+            <div id="result-stars" class="flex justify-center gap-2 mb-8"></div>
+            <button id="quiz-restart" class="px-8 py-3 bg-white text-neutral-950 font-semibold rounded-xl hover:bg-neutral-200 transition-all inline-flex items-center gap-2">
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              Ulangi Kuis
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TTS PANEL ===== -->
+      <div id="panel-tts" class="hidden">
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- Crossword Grid -->
+          <div class="flex-shrink-0">
+            <div class="overflow-x-auto -mx-2 px-2 pb-2">
+              <div id="tts-grid" class="inline-block"></div>
+            </div>
+            <!-- TTS Actions -->
+            <div class="flex gap-3 mt-6">
+              <button id="tts-check" class="flex-1 py-3 bg-white text-neutral-950 font-semibold rounded-xl hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                Periksa
+              </button>
+              <button id="tts-reset" class="py-3 px-4 sm:px-5 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/5 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+                <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                Reset
+              </button>
+            </div>
+            <div id="tts-feedback" class="hidden mt-4"></div>
+          </div>
+
+          <!-- Clues -->
+          <div class="flex-1 space-y-6">
+            <div>
+              <h4 class="text-sm font-semibold uppercase tracking-wider text-red-400 mb-3">Mendatar</h4>
+              <ul class="space-y-2">
+                <li class="tts-clue flex gap-3 text-sm" data-clue="1A">
+                  <span class="font-bold text-white w-5 flex-shrink-0">1.</span>
+                  <span class="text-neutral-400">Buah beri merah yang bijinya terletak di luar permukaan kulit (10 huruf)</span>
+                </li>
+                <li class="tts-clue flex gap-3 text-sm" data-clue="4A">
+                  <span class="font-bold text-white w-5 flex-shrink-0">4.</span>
+                  <span class="text-neutral-400">Nutrisi yang paling tinggi kandungannya pada Raspberry (5 huruf)</span>
+                </li>
+                <li class="tts-clue flex gap-3 text-sm" data-clue="5A">
+                  <span class="font-bold text-white w-5 flex-shrink-0">5.</span>
+                  <span class="text-neutral-400">Buah beri yang terkenal menjaga kesehatan saluran kemih (9 huruf)</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold uppercase tracking-wider text-red-400 mb-3">Menurun</h4>
+              <ul class="space-y-2">
+                <li class="tts-clue flex gap-3 text-sm" data-clue="2D">
+                  <span class="font-bold text-white w-5 flex-shrink-0">2.</span>
+                  <span class="text-neutral-400">Buah beri dari Amazon yang populer dijadikan smoothie bowl (4 huruf)</span>
+                </li>
+                <li class="tts-clue flex gap-3 text-sm" data-clue="3D">
+                  <span class="font-bold text-white w-5 flex-shrink-0">3.</span>
+                  <span class="text-neutral-400">Buah beri biru yang dijuluki "raja antioksidan" (9 huruf)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-rose-400 flex items-center justify-center">
+            <i data-lucide="cherry" class="w-4 h-4 text-white"></i>
+          </div>
+          <span class="font-bold">Berry<span class="text-red-400">Pedia</span></span>
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-500 text-center">Website Edukasi Interaktif &mdash; Tugas Praktik Informatika 2025</p>
+        <a href="#hero" class="p-2 rounded-lg border border-white/10 hover:bg-white/5 transition-colors" aria-label="Kembali ke Atas">
+          <i data-lucide="arrow-up" class="w-5 h-5 text-neutral-500 hover:text-white transition-colors"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
