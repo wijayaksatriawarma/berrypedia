@@ -568,7 +568,7 @@ body {
 }
 
 .benefit-card.open .benefit-dropdown {
-  max-height: 500px;
+  max-height: 800px;
 }
 
 .benefit-card.open .benefit-chevron {
