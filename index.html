@@ -974,7 +974,7 @@
               <i data-lucide="trophy" class="w-8 h-8 text-red-400"></i>
             </div>
             <h3 class="text-2xl font-bold mb-3">Pilih Tingkat Kesulitan</h3>
-            <p class="text-neutral-400 mb-12 text-sm">Setiap tingkat memiliki jumlah soal yang berbeda.</p>
+            <p class="text-neutral-400 mb-20 text-sm">Setiap tingkat memiliki jumlah soal yang berbeda.</p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-center" data-game="quiz" data-diff="easy">
                 <div class="text-3xl font-bold text-emerald-400 mb-1">Easy</div>
@@ -1040,7 +1040,7 @@
               <i data-lucide="grid-3x3" class="w-8 h-8 text-red-400"></i>
             </div>
             <h3 class="text-2xl font-bold mb-3">Pilih Tingkat Kesulitan</h3>
-            <p class="text-neutral-400 mb-12 text-sm">Semakin sulit, semakin banyak kata yang harus diisi.</p>
+            <p class="text-neutral-400 mb-20 text-sm">Semakin sulit, semakin banyak kata yang harus diisi.</p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-center" data-game="tts" data-diff="easy">
                 <div class="text-3xl font-bold text-emerald-400 mb-1">Easy</div>
@@ -1091,7 +1091,7 @@
               <i data-lucide="layers" class="w-8 h-8 text-red-400"></i>
             </div>
             <h3 class="text-2xl font-bold mb-3">Pilih Tingkat Kesulitan</h3>
-            <p class="text-neutral-400 mb-12 text-sm">Temukan semua pasangan kartu buah beri yang identik.</p>
+            <p class="text-neutral-400 mb-20 text-sm">Temukan semua pasangan kartu buah beri yang identik.</p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <button class="diff-btn bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-center" data-game="memory" data-diff="easy">
                 <div class="text-3xl font-bold text-emerald-400 mb-1">Easy</div>
@@ -1172,13 +1172,30 @@
           </div>
           <span class="font-bold">Berry<span class="text-red-400">Pedia</span></span>
         </div>
-        <p class="text-xs sm:text-sm text-neutral-500 text-center">Website Edukasi Interaktif &mdash; Tugas Praktik Informatika 2026</p>
+        <p class="text-xs sm:text-sm text-neutral-500 text-center">Tugas Praktik Informatika 2026</p>
         <a href="#hero" class="p-2 rounded-lg border border-white/10 hover:bg-white/5 transition-colors" aria-label="Kembali ke Atas">
           <i data-lucide="arrow-up" class="w-5 h-5 text-neutral-500 hover:text-white transition-colors"></i>
         </a>
       </div>
     </div>
   </footer>
+
+  <!-- ============ GALLERY POPUP ============ -->
+  <div id="gallery-overlay" class="modal-overlay hidden">
+    <div class="modal-container" style="max-width: 720px;">
+      <button class="modal-close-btn" id="gallery-close">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <div class="p-4 pt-14 sm:p-6 sm:pt-14">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-red-400 text-center mb-4">Gallery</p>
+        <div class="gallery-main-img-wrapper rounded-xl overflow-hidden mb-4">
+          <img id="gallery-main-img" src="" alt="" class="w-full h-[45vh] object-cover" />
+        </div>
+        <p id="gallery-main-label" class="text-sm font-semibold text-white text-center mb-4"></p>
+        <div id="gallery-thumbs" class="grid grid-cols-4 sm:grid-cols-8 gap-2"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ SCRIPTS ============ -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>

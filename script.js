@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCrossword();
   initMemory();
   initWaveText();
+  initGallery();
 });
 
 // ===========================
@@ -299,6 +300,7 @@ function openModal(data) {
 
   // Show modal
   modal.classList.remove('hidden');
+  document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
 
   requestAnimationFrame(() => {
@@ -309,6 +311,7 @@ function openModal(data) {
 function closeModal() {
   const modal = document.getElementById('berry-modal');
   modal.classList.remove('active');
+  document.documentElement.style.overflow = '';
   document.body.style.overflow = '';
 
   setTimeout(() => {
@@ -1278,4 +1281,104 @@ function resetMemory() {
   memorySeconds = 0;
   const grid = document.getElementById('memory-grid');
   if (grid) grid.innerHTML = '';
+}
+
+// ===========================
+// GALLERY POPUP
+// ===========================
+const galleryImages = [
+  { src: 'https://images.unsplash.com/photo-1622143486012-d784ef5d88c4?w=800&h=600&fit=crop', alt: 'Strawberry' },
+  { src: 'https://images.unsplash.com/photo-1655288511427-827ced84b453?w=800&h=600&fit=crop', alt: 'Pohon Strawberry' },
+  { src: 'https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=800&h=600&fit=crop', alt: 'Blueberry' },
+  { src: 'https://images.unsplash.com/photo-1688411758091-19436fe97a77?w=800&h=600&fit=crop', alt: 'Pohon Blueberry' },
+  { src: 'https://images.unsplash.com/photo-1593461802389-d57d73a36913?w=800&h=600&fit=crop', alt: 'Raspberry' },
+  { src: 'https://images.unsplash.com/photo-1693105790315-36fe7e38cd63?w=800&h=600&fit=crop', alt: 'Pohon Raspberry' },
+  { src: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=800&h=600&fit=crop', alt: 'Blackberry' },
+  { src: 'https://images.unsplash.com/photo-1667167199605-691764ce5396?w=800&h=600&fit=crop', alt: 'Pohon Blackberry' },
+  { src: 'img/cranberry.png', alt: 'Cranberry' },
+  { src: 'https://images.unsplash.com/photo-1732980763819-241e8e5c2917?w=800&h=600&fit=crop', alt: 'Pohon Cranberry' },
+  { src: 'https://images.unsplash.com/photo-1656555706960-7c9c5f1c68e0?w=800&h=600&fit=crop', alt: 'Acai Berry' },
+  { src: 'https://images.unsplash.com/photo-1698610641100-565cc749fc60?w=800&h=600&fit=crop', alt: 'Pohon Acai Berry' },
+  { src: 'https://images.unsplash.com/photo-1556048029-9c5edf1aa695?w=800&h=600&fit=crop', alt: 'Campuran Beri Segar' },
+  { src: 'https://images.unsplash.com/photo-1675648506668-7b6d3d0dcbd8?w=800&h=600&fit=crop', alt: 'Beri dalam Mangkuk' },
+  { src: 'https://images.unsplash.com/photo-1620429194460-410b7a87d785?w=800&h=600&fit=crop', alt: 'Beri Merah & Hitam' },
+  { src: 'https://images.unsplash.com/photo-1595872506700-a69023116568?w=800&h=600&fit=crop', alt: 'Panen Buah Beri' },
+];
+
+function initGallery() {
+  const overlay = document.getElementById('gallery-overlay');
+  const closeBtn = document.getElementById('gallery-close');
+  const mainImg = document.getElementById('gallery-main-img');
+  const mainLabel = document.getElementById('gallery-main-label');
+  const thumbsContainer = document.getElementById('gallery-thumbs');
+  if (!overlay || !mainImg) return;
+
+  let thumbsBuilt = false;
+
+  // Preload all gallery images on page load
+  galleryImages.forEach(img => {
+    const preload = new Image();
+    preload.src = img.src;
+  });
+
+  function setActiveImage(index) {
+    const img = galleryImages[index];
+    mainImg.src = img.src;
+    mainImg.alt = img.alt;
+    mainLabel.textContent = img.alt;
+    thumbsContainer.querySelectorAll('.gallery-thumb').forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+    });
+  }
+
+  function buildThumbs() {
+    if (thumbsBuilt) return;
+    const fragment = document.createDocumentFragment();
+    galleryImages.forEach((img, i) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'gallery-thumb';
+      thumb.innerHTML = '<img src="' + img.src + '" alt="' + img.alt + '" loading="lazy" />';
+      thumb.addEventListener('click', () => setActiveImage(i));
+      fragment.appendChild(thumb);
+    });
+    thumbsContainer.appendChild(fragment);
+    thumbsBuilt = true;
+  }
+
+  function openGallery(clickedSrc) {
+    let activeIndex = galleryImages.findIndex(img =>
+      clickedSrc.includes(img.src.split('?')[0].split('/').pop())
+    );
+    if (activeIndex === -1) activeIndex = 0;
+
+    buildThumbs();
+    setActiveImage(activeIndex);
+
+    overlay.classList.remove('hidden');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => overlay.classList.add('active'));
+  }
+
+  function closeGallery() {
+    overlay.classList.remove('active');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    setTimeout(() => overlay.classList.add('hidden'), 300);
+  }
+
+  document.querySelectorAll('.marquee-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (img) openGallery(img.src);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeGallery);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeGallery();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeGallery();
+  });
 }
