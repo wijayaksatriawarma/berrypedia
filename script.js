@@ -1300,8 +1300,8 @@ const galleryImages = [
   { src: 'https://images.unsplash.com/photo-1656555706960-7c9c5f1c68e0?w=800&h=600&fit=crop', alt: 'Acai Berry' },
   { src: 'https://images.unsplash.com/photo-1698610641100-565cc749fc60?w=800&h=600&fit=crop', alt: 'Pohon Acai Berry' },
   { src: 'https://images.unsplash.com/photo-1556048029-9c5edf1aa695?w=800&h=600&fit=crop', alt: 'Campuran Beri Segar' },
-  { src: 'https://images.unsplash.com/photo-1675648506668-7b6d3d0dcbd8?w=800&h=600&fit=crop', alt: 'Beri dalam Mangkuk' },
-  { src: 'https://images.unsplash.com/photo-1620429194460-410b7a87d785?w=800&h=600&fit=crop', alt: 'Beri Merah & Hitam' },
+  { src: 'https://images.unsplash.com/photo-1675648506668-7b6d3d0dcbd8?w=800&h=600&fit=crop', alt: 'Buah Beri' },
+  { src: 'https://images.unsplash.com/photo-1620429194460-410b7a87d785?w=800&h=600&fit=crop', alt: 'Olahan Beri' },
   { src: 'https://images.unsplash.com/photo-1595872506700-a69023116568?w=800&h=600&fit=crop', alt: 'Panen Buah Beri' },
 ];
 
