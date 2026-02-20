@@ -58,13 +58,14 @@ function initWaveText() {
       const rect = c.getBoundingClientRect();
       const charCenterX = rect.left + rect.width / 2;
       const dist = Math.abs(e.clientX - charCenterX);
+      const radius = 120;
 
-      if (dist < 20) {
-        c.style.transform = 'translateY(-10px) scale(1.25)';
-      } else if (dist < 50) {
-        c.style.transform = 'translateY(-6px) scale(1.15)';
-      } else if (dist < 80) {
-        c.style.transform = 'translateY(-3px) scale(1.07)';
+      if (dist < radius) {
+        const ratio = 1 - dist / radius;
+        const smooth = ratio * ratio * (3 - 2 * ratio);
+        const y = -12 * smooth;
+        const s = 1 + 0.25 * smooth;
+        c.style.transform = `translateY(${y}px) scale(${s})`;
       } else {
         c.style.transform = 'translateY(0) scale(1)';
       }

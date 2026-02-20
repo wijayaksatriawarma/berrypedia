@@ -96,7 +96,7 @@
           Mulai Jelajahi
           <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
         </a>
-        <a href="#quiz" class="px-8 py-4 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/5 transition-all">
+        <a href="#quiz" class="btn-quiz-cta px-8 py-4 border border-white/20 text-white font-semibold rounded-xl">
           Ikuti Kuis
         </a>
       </div>
@@ -502,7 +502,7 @@
                   <img src="img/logo-strawberry.png" alt="Strawberry" class="w-10 h-10 rounded-lg bg-red-500/10 p-1.5 object-contain flex-shrink-0" />
                   <div>
                     <span class="text-sm font-semibold text-white">Strawberry</span>
-                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Mengandung 58,8 mg vitamin C per 100g — melebihi jeruk — yang memperkuat pertahanan imun tubuh.</p>
+                    <p class="text-xs text-neutral-400 leading-relaxed mt-0.5">Mengandung 58,8 mg vitamin C per 100g yang memperkuat pertahanan imun tubuh.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03]">
@@ -854,17 +854,17 @@
 
       <!-- Highlight Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10" data-aos="fade-up" data-aos-delay="300">
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center">
+        <div class="highlight-card bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center" data-glow="red">
           <div class="text-2xl font-bold text-red-400 mb-1">Strawberry</div>
           <p class="text-xs text-neutral-500">Vitamin C Tertinggi</p>
           <p class="text-sm text-neutral-400 mt-1">58.8 mg per 100g</p>
         </div>
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center">
+        <div class="highlight-card bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center" data-glow="rose">
           <div class="text-2xl font-bold text-rose-400 mb-1">Raspberry</div>
           <p class="text-xs text-neutral-500">Serat Tertinggi</p>
           <p class="text-sm text-neutral-400 mt-1">6.5 g per 100g</p>
         </div>
-        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center">
+        <div class="highlight-card bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center" data-glow="orange">
           <div class="text-2xl font-bold text-orange-400 mb-1">Cranberry</div>
           <p class="text-xs text-neutral-500">Gula Terendah</p>
           <p class="text-sm text-neutral-400 mt-1">4.0 g per 100g</p>
@@ -902,7 +902,7 @@
 
           <div class="video-slide" data-index="1">
             <div class="video-slide-label">Jenis Buah Beri</div>
-            <a href="https://youtu.be/reayoUtJ0jU" target="_blank" rel="noopener" class="video-wrapper block relative group">
+            <div class="video-wrapper block relative group cursor-pointer">
               <div class="video-container">
                 <img src="img/cover-jenis.png" alt="Jenis Buah Beri" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/10 transition-colors">
@@ -911,12 +911,12 @@
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
 
           <div class="video-slide" data-index="2">
             <div class="video-slide-label">Fakta Unik Beri</div>
-            <a href="https://youtube.com/shorts/KoMXjdko43w" target="_blank" rel="noopener" class="video-wrapper block relative group">
+            <div class="video-wrapper block relative group cursor-pointer">
               <div class="video-container">
                 <img src="img/cover-fakta.png" alt="Fakta Unik Beri" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/10 transition-colors">
@@ -925,7 +925,7 @@
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
 
         </div>
