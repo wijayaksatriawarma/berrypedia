@@ -105,23 +105,116 @@
 
     <!-- Scroll Indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
-      <div class="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2">
+      <!-- Desktop: mouse icon -->
+      <div class="scroll-mouse w-6 h-10 rounded-full border-2 border-white/20 justify-center pt-2">
         <div class="w-1 h-3 bg-white/40 rounded-full animate-bounce"></div>
+      </div>
+      <!-- Mobile/Tablet: hand swipe icon -->
+      <div class="scroll-hand items-center gap-1">
+        <i data-lucide="hand" class="w-6 h-6 text-white/40 animate-bounce"></i>
+        <span class="text-[10px] text-white/30 tracking-wider uppercase">Scroll</span>
       </div>
     </div>
   </section>
 
   <!-- ============ ABOUT BERRIES SECTION ============ -->
-  <section id="about" class="relative py-16 md:py-32">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-12" data-aos="fade-up">
+  <section id="about" class="about-section relative py-20 md:py-32">
+    <!-- Floating 3D Box Images scattered across the entire section background -->
+    <div class="floating-img floating-img--1 gallery-trigger" data-aos="fade-down-right" data-aos-delay="200">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=400&fit=crop" alt="Strawberry" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--2 gallery-trigger" data-aos="fade-down-left" data-aos-delay="350">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=400&h=400&fit=crop" alt="Blueberry" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--3 gallery-trigger" data-aos="fade-up-right" data-aos-delay="500">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=400&h=400&fit=crop" alt="Raspberry" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--4 gallery-trigger" data-aos="fade-up-left" data-aos-delay="300">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&h=400&fit=crop" alt="Blueberry Bowl" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--5 gallery-trigger" data-aos="zoom-in" data-aos-delay="450">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="img/blackberry.png" alt="Blackberry" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--6 gallery-trigger" data-aos="zoom-in" data-aos-delay="600">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="img/cranberry.png" alt="Cranberry" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--7 gallery-trigger" data-aos="fade-right" data-aos-delay="250">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1593461802389-d57d73a36913?w=400&h=400&fit=crop" alt="Raspberry" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--8 gallery-trigger" data-aos="fade-left" data-aos-delay="400">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1556048029-9c5edf1aa695?w=400&h=400&fit=crop" alt="Campuran Beri" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <!-- Extra images to fill left & right of the explanation card -->
+    <div class="floating-img floating-img--9 gallery-trigger" data-aos="fade-right" data-aos-delay="300">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1622143486012-d784ef5d88c4?w=400&h=400&fit=crop" alt="Strawberry" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--10 gallery-trigger" data-aos="fade-left" data-aos-delay="350">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1675648506668-7b6d3d0dcbd8?w=400&h=400&fit=crop" alt="Buah Beri" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--11 gallery-trigger" data-aos="fade-right" data-aos-delay="450">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1620429194460-410b7a87d785?w=400&h=400&fit=crop" alt="Olahan Beri" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+    <div class="floating-img floating-img--12 gallery-trigger" data-aos="fade-left" data-aos-delay="500">
+      <div class="box3d">
+        <div class="box3d-face box3d-front"><img src="https://images.unsplash.com/photo-1595872506700-a69023116568?w=400&h=400&fit=crop" alt="Panen Beri" loading="lazy" /></div>
+        <div class="box3d-face box3d-right"></div>
+        <div class="box3d-face box3d-bottom"></div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative pointer-events-none">
+      <div class="text-center mb-16" data-aos="fade-up">
         <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-red-400 mb-4">Pengenalan</span>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Apa Itu Buah Beri?</h2>
       </div>
 
-      <div data-aos="fade-up" data-aos-delay="150" class="relative">
+      <div data-aos="fade-up" data-aos-delay="150" class="relative max-w-3xl mx-auto">
         <!-- Glassmorphism Card -->
-        <div class="relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-12 overflow-hidden">
+        <div class="relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-12 overflow-hidden backdrop-blur-sm pointer-events-auto">
           <!-- Decorative Accent -->
           <div class="absolute -top-20 -right-20 w-56 h-56 bg-red-500/8 rounded-full blur-[80px] pointer-events-none"></div>
           <div class="absolute -bottom-20 -left-20 w-56 h-56 bg-rose-400/8 rounded-full blur-[80px] pointer-events-none"></div>
@@ -130,25 +223,6 @@
             <p class="text-neutral-300 text-base md:text-lg leading-relaxed text-justify" style="text-align-last: center;">
               Buah beri adalah kelompok buah yang umumnya berukuran kecil hingga sedang, memiliki warna cerah seperti merah, biru, ungu, atau hitam, serta rasa yang bervariasi dari manis hingga asam. Buah-buahan ini dikenal luas karena kandungan nutrisinya yang tinggi, terutama antioksidan, vitamin, dan serat. Dalam dunia kesehatan, buah beri sering disebut sebagai <span class="text-white font-semibold">superfood</span> karena kemampuannya membantu melindungi tubuh dari kerusakan sel akibat radikal bebas, sekaligus mendukung berbagai fungsi penting tubuh seperti kesehatan jantung, otak, dan sistem imun.
             </p>
-
-            <!-- Berry Marquee Images -->
-            <div class="marquee-wrapper mt-8">
-              <div class="marquee-track">
-                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=400&fit=crop" alt="Strawberry" loading="lazy" /></div>
-                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=400&h=400&fit=crop" alt="Blueberry" loading="lazy" /></div>
-                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=400&h=400&fit=crop" alt="Raspberry" loading="lazy" /></div>
-                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&h=400&fit=crop" alt="Blueberry Bowl" loading="lazy" /></div>
-                <div class="marquee-item"><img src="img/blackberry.png" alt="Blackberry" loading="lazy" /></div>
-                <div class="marquee-item"><img src="img/cranberry.png" alt="Cranberry" loading="lazy" /></div>
-                <!-- Duplicate for seamless loop -->
-                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=400&fit=crop" alt="Strawberry" loading="lazy" /></div>
-                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1457296898342-cdd24585d095?w=400&h=400&fit=crop" alt="Blueberry" loading="lazy" /></div>
-                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=400&h=400&fit=crop" alt="Raspberry" loading="lazy" /></div>
-                <div class="marquee-item"><img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&h=400&fit=crop" alt="Blueberry Bowl" loading="lazy" /></div>
-                <div class="marquee-item"><img src="img/blackberry.png" alt="Blackberry" loading="lazy" /></div>
-                <div class="marquee-item"><img src="img/cranberry.png" alt="Cranberry" loading="lazy" /></div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

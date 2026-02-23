@@ -1368,7 +1368,7 @@ function initGallery() {
     setTimeout(() => overlay.classList.add('hidden'), 300);
   }
 
-  document.querySelectorAll('.marquee-item').forEach(item => {
+  document.querySelectorAll('.gallery-trigger').forEach(item => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
       if (img) openGallery(img.src);
